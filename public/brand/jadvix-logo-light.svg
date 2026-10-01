@@ -1,0 +1,13 @@
+<!-- TODO: PLACEHOLDER LOGO. Replace with the official Jadvix white logo (jadvix-logo-light.svg).
+     White wordmark for use on dark/navy backgrounds. Do not recolor, stretch, or crop the real logo. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" role="img" aria-label="Jadvix Academy">
+  <g fill="none">
+    <rect x="2" y="10" width="28" height="28" rx="7" fill="#FFFFFF"/>
+    <path d="M11 17h10v9a5 5 0 0 1-5 5 5 5 0 0 1-5-5" stroke="#4599D3" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  <text x="40" y="26" font-family="'Space Grotesk', system-ui, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Jadvix</text>
+  <text x="40" y="40" font-family="system-ui, sans-serif" font-size="10.5" letter-spacing="2.5" fill="#AED4EC">ACADEMY</text>
+  <rect x="112" y="14" width="3" height="20" fill="#4599D3"/>
+  <rect x="117" y="14" width="3" height="20" fill="#E01E26"/>
+  <rect x="122" y="14" width="3" height="20" fill="#F05623"/>
+</svg>

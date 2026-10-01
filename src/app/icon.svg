@@ -1,0 +1,8 @@
+<!-- Favicon source derived from the logo mark. TODO: replace with official brand mark. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect width="48" height="48" rx="11" fill="#0B1F33"/>
+  <path d="M15 16h18v15a9 9 0 0 1-9 9 9 9 0 0 1-9-9" fill="none" stroke="#4599D3" stroke-width="3.2" stroke-linecap="round"/>
+  <rect x="15" y="42" width="5" height="4" fill="#4599D3"/>
+  <rect x="21.5" y="42" width="5" height="4" fill="#E01E26"/>
+  <rect x="28" y="42" width="5" height="4" fill="#F05623"/>
+</svg>

@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-navy;
+    text-wrap: balance;
+  }
+
+  /* Visible, consistent focus ring for keyboard users (WCAG AA). */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-blue ring-offset-2 ring-offset-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  /* The brand tri-color stripe motif: blue / red / orange. */
+  .tri-stripe {
+    background-image: linear-gradient(
+      to right,
+      theme("colors.blue.DEFAULT") 0 33.333%,
+      theme("colors.red.DEFAULT") 33.333% 66.666%,
+      theme("colors.orange.DEFAULT") 66.666% 100%
+    );
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-orange text-white hover:bg-orange-600 focus-visible:ring-orange;
+  }
+  .btn-secondary {
+    @apply btn bg-navy text-white hover:bg-navy-700 focus-visible:ring-navy;
+  }
+  .btn-outline {
+    @apply btn border border-steel bg-white text-navy hover:border-blue hover:text-blue focus-visible:ring-blue;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/30 bg-white/5 text-white hover:bg-white/10 focus-visible:ring-white;
+  }
+
+  .card {
+    @apply rounded-2xl border border-steel/70 bg-white p-6 shadow-card;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-blue-500;
+  }
+
+  .prose-legal {
+    @apply max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink/80;
+  }
+  .prose-legal h2 {
+    @apply pt-4 text-xl;
+  }
+  .prose-legal h3 {
+    @apply pt-2 text-lg;
+  }
+  .prose-legal ul {
+    @apply list-disc space-y-2 pl-6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
