@@ -40,55 +40,53 @@ export default function ProgramPage() {
       </Section>
 
       {/* Sequential rule */}
-      <section className="bg-mist">
-        <div className="container-page py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
-              <SectionHeading
-                eyebrow="How progression works"
-                title="Sequential, gated, and the same for lateral entry"
-                lead={sequentialRule.short}
-              />
-            </div>
-            <Card>
-              <ul className="space-y-4">
-                {sequentialRule.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <ShieldCheck
-                      size={20}
-                      className="mt-0.5 shrink-0 text-blue-600"
-                    />
-                    <span className="text-sm text-ink/80">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+      <Section light>
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionHeading
+              eyebrow="How progression works"
+              title="Sequential, gated, and the same for lateral entry"
+              lead={sequentialRule.short}
+            />
           </div>
+          <Card light>
+            <ul className="space-y-4">
+              {sequentialRule.points.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <ShieldCheck
+                    size={20}
+                    className="mt-0.5 shrink-0 text-blue-600"
+                  />
+                  <span className="text-sm text-ink/80">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
         </div>
-      </section>
+      </Section>
 
       {/* Retry + capacity */}
       <Section>
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <div className="flex items-center gap-3">
-              <RefreshCw className="text-orange-600" />
+              <RefreshCw className="text-orange" />
               <h3 className="text-lg">If you don&apos;t clear a gate</h3>
             </div>
-            <p className="mt-3 text-sm text-ink/70">{retryPolicy.summary}</p>
-            <p className="mt-4 flex items-start gap-2 rounded-lg bg-mist p-3 text-xs text-ink/60">
-              <Info size={15} className="mt-0.5 shrink-0 text-navy-600" />
+            <p className="mt-3 text-sm text-slate-400">{retryPolicy.summary}</p>
+            <p className="mt-4 flex items-start gap-2 rounded-2xl border border-white/10 bg-night-800/60 p-3 text-xs text-slate-400">
+              <Info size={15} className="mt-0.5 shrink-0 text-blue-400" />
               The policy for what happens after both retry attempts are used is
               still being finalised.
             </p>
           </Card>
           <Card>
             <div className="flex items-center gap-3">
-              <Info className="text-blue-600" />
+              <Info className="text-blue-400" />
               <h3 className="text-lg">Internships are capacity-bound</h3>
             </div>
-            <p className="mt-3 text-sm text-ink/70">{internship.capacityNote}</p>
-            <p className="mt-3 text-sm text-ink/70">
+            <p className="mt-3 text-sm text-slate-400">{internship.capacityNote}</p>
+            <p className="mt-3 text-sm text-slate-400">
               Clearing a gate keeps you eligible and lets you continue
               coursework, but does not guarantee a placement.
             </p>

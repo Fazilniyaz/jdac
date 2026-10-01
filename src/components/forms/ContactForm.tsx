@@ -45,9 +45,9 @@ export function ContactForm() {
   if (status === "done" && result?.ok) {
     return (
       <div className="card text-center" role="status" aria-live="polite">
-        <CheckCircle2 className="mx-auto text-green-700" size={40} />
+        <CheckCircle2 className="mx-auto text-emerald-400" size={40} />
         <h3 className="mt-4 text-xl">Message sent</h3>
-        <p className="mx-auto mt-2 max-w-md text-sm text-ink/70">{result.message}</p>
+        <p className="mx-auto mt-2 max-w-md text-sm text-slate-400">{result.message}</p>
       </div>
     );
   }
@@ -76,7 +76,7 @@ export function ContactForm() {
       </div>
 
       {result && !result.ok && (
-        <p role="alert" className="rounded-lg bg-red/10 px-4 py-3 text-sm text-red-600">
+        <p role="alert" className="rounded-xl border border-red/30 bg-red/15 px-4 py-3 text-sm text-red-200">
           {result.message}
         </p>
       )}

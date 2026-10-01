@@ -4,15 +4,16 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
+  /* Dark-first theme (premium agency look). */
   body {
-    @apply bg-white text-ink antialiased;
+    @apply bg-night text-slate-300 antialiased;
     font-family: var(--font-inter), system-ui, sans-serif;
   }
 
@@ -20,13 +21,27 @@
   h2,
   h3,
   h4 {
-    @apply font-display tracking-tight text-navy;
+    @apply font-display font-bold tracking-tight text-white;
     text-wrap: balance;
   }
 
-  /* Visible, consistent focus ring for keyboard users (WCAG AA). */
+  /* Inside a light surface, flip text + headings back to dark ink. */
+  .surface-light {
+    @apply bg-mist text-ink/80;
+  }
+  .surface-light :is(h1, h2, h3, h4) {
+    @apply text-navy;
+  }
+
+  ::selection {
+    @apply bg-blue/30 text-white;
+  }
+
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    @apply outline-none ring-2 ring-blue ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-blue ring-offset-2 ring-offset-night;
+  }
+  .surface-light :where(a, button, input, select, textarea):focus-visible {
+    @apply ring-offset-white;
   }
 }
 
@@ -35,7 +50,6 @@
     @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
   }
 
-  /* The brand tri-color stripe motif: blue / red / orange. */
   .tri-stripe {
     background-image: linear-gradient(
       to right,
@@ -45,32 +59,77 @@
     );
   }
 
+  /* Accent word inside a heading (the blue segment). */
+  .accent {
+    @apply text-blue-400;
+  }
+  .surface-light .accent {
+    @apply text-blue-600;
+  }
+  .surface-light .link-arrow {
+    @apply text-blue-600 hover:text-blue-700;
+  }
+
+  /* Eyebrow pill: • LABEL inside a rounded outline. */
+  .eyebrow-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200;
+  }
+  .eyebrow-pill::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-blue-400;
+  }
+  .surface-light .eyebrow-pill {
+    @apply border-navy/10 bg-white text-navy/80 shadow-card;
+  }
+
+  /* Buttons — rounded-full pills. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2;
   }
   .btn-primary {
     @apply btn bg-orange text-white hover:bg-orange-600 focus-visible:ring-orange;
   }
+  .btn-blue {
+    @apply btn bg-blue text-white hover:bg-blue-500 focus-visible:ring-blue;
+  }
   .btn-secondary {
-    @apply btn bg-navy text-white hover:bg-navy-700 focus-visible:ring-navy;
+    @apply btn bg-white text-navy hover:bg-slate-100 focus-visible:ring-white;
   }
+  /* Outline on dark surfaces. */
   .btn-outline {
-    @apply btn border border-steel bg-white text-navy hover:border-blue hover:text-blue focus-visible:ring-blue;
+    @apply btn border border-white/25 bg-transparent text-white hover:border-white/60 hover:bg-white/5 focus-visible:ring-white;
   }
-  .btn-ghost-light {
-    @apply btn border border-white/30 bg-white/5 text-white hover:bg-white/10 focus-visible:ring-white;
+  /* Outline on light surfaces. */
+  .btn-outline-dark {
+    @apply btn border border-navy/20 bg-transparent text-navy hover:border-blue hover:text-blue focus-visible:ring-blue;
   }
 
+  /* Dark card / panel. */
   .card {
-    @apply rounded-2xl border border-steel/70 bg-white p-6 shadow-card;
+    @apply rounded-3xl border border-white/10 bg-panel p-6 shadow-float;
+  }
+  /* Light card. */
+  .card-light {
+    @apply rounded-3xl border border-steel/60 bg-white p-6 text-ink/80 shadow-card;
+  }
+  .card-light :is(h1, h2, h3, h4) {
+    @apply text-navy;
   }
 
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-blue-500;
+  /* Thin line-art illustration panel (top of a service card). */
+  .artframe {
+    @apply flex items-center justify-center rounded-2xl border border-blue/15 bg-gradient-to-br from-navy-800 to-night text-blue-400;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300;
   }
 
   .prose-legal {
-    @apply max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink/80;
+    @apply max-w-3xl space-y-4 text-[15px] leading-relaxed text-slate-300;
+  }
+  .prose-legal :is(h2, h3) {
+    @apply text-white;
   }
   .prose-legal h2 {
     @apply pt-4 text-xl;
@@ -80,6 +139,29 @@
   }
   .prose-legal ul {
     @apply list-disc space-y-2 pl-6;
+  }
+  .prose-legal a {
+    @apply text-blue-400 underline;
+  }
+}
+
+@layer utilities {
+  /* Mask edges of the marquee row so it fades in/out. */
+  .mask-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
   }
 }
 
@@ -91,6 +173,7 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

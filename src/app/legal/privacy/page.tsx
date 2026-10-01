@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <PageHeader eyebrow="Legal" title="Privacy Policy" />
       <Section>
         <div className="prose-legal">
-          <p className="rounded-lg bg-orange-50 p-4 text-sm text-orange-600">
+          <p className="rounded-xl border border-orange-500/30 bg-orange/10 p-4 text-sm text-orange-100">
             TODO: This privacy policy is a draft and must be reviewed by legal
             (including UK GDPR / DPDP Act India compliance) before publication.
           </p>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
           <h2>7. Contact</h2>
           <p>
             For any privacy question, use our{" "}
-            <Link href="/contact" className="text-blue-600 underline">
+            <Link href="/contact" className="text-blue-400 underline">
               Contact
             </Link>{" "}
             page.

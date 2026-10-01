@@ -89,6 +89,20 @@ export const objectives = [
   },
 ] as const;
 
+/** Skills/tech taught across the program — used in the marquee row. */
+export const marqueeSkills = [
+  "HTML & CSS",
+  "JavaScript",
+  "React",
+  "Node.js",
+  "REST APIs",
+  "SQL & NoSQL",
+  "Git & GitHub",
+  "Claude Code",
+  "Agentic AI",
+  "Full Stack",
+] as const;
+
 export const keyStats = [
   { value: "10 months", label: "Structured training" },
   { value: "6 months", label: "Paid internship" },

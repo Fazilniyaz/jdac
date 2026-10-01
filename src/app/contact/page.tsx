@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Mail, Phone, MapPin, AlertTriangle } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { contact, offices, company } from "@/content/academy";
 
@@ -28,18 +27,18 @@ export default function ContactPage() {
 
             <div className="mt-6 space-y-4">
               <div className="flex items-start gap-3">
-                <Mail size={20} className="mt-0.5 shrink-0 text-blue-600" />
+                <Mail size={20} className="mt-0.5 shrink-0 text-blue-400" />
                 <div>
-                  <p className="text-sm font-medium text-navy">Email</p>
-                  <p className="text-sm text-ink/70">{contact.email}</p>
+                  <p className="text-sm font-medium text-white">Email</p>
+                  <p className="text-sm text-slate-400">{contact.email}</p>
                   {contact.emailIsPlaceholder && <TodoTag />}
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Phone size={20} className="mt-0.5 shrink-0 text-blue-600" />
+                <Phone size={20} className="mt-0.5 shrink-0 text-blue-400" />
                 <div>
-                  <p className="text-sm font-medium text-navy">Phone / WhatsApp</p>
-                  <p className="text-sm text-ink/70">{contact.phone}</p>
+                  <p className="text-sm font-medium text-white">Phone / WhatsApp</p>
+                  <p className="text-sm text-slate-400">{contact.phone}</p>
                   {contact.phoneIsPlaceholder && <TodoTag />}
                 </div>
               </div>
@@ -49,14 +48,14 @@ export default function ContactPage() {
             <ul className="mt-4 space-y-3">
               {offices.map((o) => (
                 <li key={`${o.city}-${o.country}`} className="flex items-start gap-3">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-blue-600" />
-                  <span className="text-sm text-ink/80">
+                  <MapPin size={18} className="mt-0.5 shrink-0 text-blue-400" />
+                  <span className="text-sm text-slate-300">
                     {o.city}, {o.country}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-xs text-ink/50">{company.footerLine}</p>
+            <p className="mt-6 text-xs text-slate-500">{company.footerLine}</p>
           </aside>
 
           <ContactForm />
@@ -69,11 +68,11 @@ export default function ContactPage() {
 /** Visible marker that a contact detail is a placeholder (see guardrails). */
 function TodoTag() {
   return (
-    <Card className="mt-2 flex items-center gap-2 border-orange-500/40 bg-orange-50 p-2">
-      <AlertTriangle size={14} className="shrink-0 text-orange-600" />
-      <span className="text-xs text-orange-600">
+    <div className="mt-2 flex items-center gap-2 rounded-xl border border-orange-500/40 bg-orange/10 px-3 py-2">
+      <AlertTriangle size={14} className="shrink-0 text-orange" />
+      <span className="text-xs text-orange-100">
         TODO: set a real value via NEXT_PUBLIC_CONTACT_* env.
       </span>
-    </Card>
+    </div>
   );
 }

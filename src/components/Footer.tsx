@@ -12,7 +12,7 @@ import {
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-auto bg-navy text-white/80">
+    <footer className="mt-auto border-t border-white/10 bg-night-800 text-slate-400">
       <TriStripe />
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-1">

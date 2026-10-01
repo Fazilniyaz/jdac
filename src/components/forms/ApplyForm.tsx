@@ -52,9 +52,9 @@ export function ApplyForm() {
   if (status === "done" && result?.ok) {
     return (
       <div className="card text-center" role="status" aria-live="polite">
-        <CheckCircle2 className="mx-auto text-green-700" size={40} />
+        <CheckCircle2 className="mx-auto text-emerald-400" size={40} />
         <h3 className="mt-4 text-xl">Application received</h3>
-        <p className="mx-auto mt-2 max-w-md text-sm text-ink/70">
+        <p className="mx-auto mt-2 max-w-md text-sm text-slate-400">
           {result.message}
         </p>
         <button
@@ -145,7 +145,7 @@ export function ApplyForm() {
       </div>
 
       {result && !result.ok && (
-        <p role="alert" className="rounded-lg bg-red/10 px-4 py-3 text-sm text-red-600">
+        <p role="alert" className="rounded-xl border border-red/30 bg-red/15 px-4 py-3 text-sm text-red-200">
           {result.message}
         </p>
       )}
@@ -157,7 +157,7 @@ export function ApplyForm() {
           <>Submit application <Send size={16} /></>
         )}
       </button>
-      <p className="text-xs text-ink/50">
+      <p className="text-xs text-slate-500">
         By submitting you agree to be contacted about your enquiry. We don&apos;t
         share your details with third parties.
       </p>

@@ -32,7 +32,7 @@ export default function CurriculumPage() {
 
       {/* Claude Code highlight */}
       <Section className="pb-0">
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-blue-500/30 bg-blue-500/10">
           <div className="flex items-start gap-4">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue text-white">
               <Bot size={22} />
@@ -40,7 +40,7 @@ export default function CurriculumPage() {
             <div>
               <Badge tone="blue">AI-assisted engineering</Badge>
               <h2 className="mt-2 text-xl">A Claude Code–assisted workflow</h2>
-              <p className="mt-2 max-w-2xl text-sm text-ink/70">
+              <p className="mt-2 max-w-2xl text-sm text-slate-300">
                 From Stage 1 onward you build with Claude Code as part of your
                 engineering workflow — using AI to enhance frontend work, raise
                 productivity, and eventually to build and ship agentic features
@@ -61,13 +61,13 @@ export default function CurriculumPage() {
             </div>
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-2xl border border-steel/70 shadow-card">
+          <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 shadow-float">
             <table className="w-full border-collapse text-left text-sm">
               <caption className="sr-only">
                 {stage.name} coverage by area
               </caption>
               <thead>
-                <tr className="bg-navy text-white">
+                <tr className="bg-night-800 text-white">
                   <th scope="col" className="w-1/3 px-5 py-3 font-semibold">
                     Area
                   </th>
@@ -80,15 +80,15 @@ export default function CurriculumPage() {
                 {stage.areas.map((area, i) => (
                   <tr
                     key={area.area}
-                    className={i % 2 === 0 ? "bg-white" : "bg-mist"}
+                    className={i % 2 === 0 ? "bg-panel" : "bg-night-800/40"}
                   >
                     <th
                       scope="row"
-                      className="px-5 py-4 align-top font-semibold text-navy"
+                      className="px-5 py-4 align-top font-semibold text-white"
                     >
                       {area.area}
                     </th>
-                    <td className="px-5 py-4 align-top text-ink/75">
+                    <td className="px-5 py-4 align-top text-slate-400">
                       {area.coverage}
                     </td>
                   </tr>
@@ -100,35 +100,33 @@ export default function CurriculumPage() {
       ))}
 
       {/* Supporting tracks */}
-      <section className="mt-16 bg-mist sm:mt-20">
-        <div className="container-page py-16 sm:py-20">
-          <h2 className="text-2xl sm:text-3xl">Supporting tracks (all stages)</h2>
-          <p className="mt-3 max-w-2xl text-ink/70">
-            Every cohort runs with two coordinators alongside the technical
-            curriculum.
-          </p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {supportingTracks.map((track, i) => {
-              const Icon = trackIcons[i] ?? UserCog;
-              return (
-                <Card key={track.role}>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="mt-4 text-lg">{track.role}</h3>
-                  <p className="mt-2 text-sm text-ink/70">{track.summary}</p>
-                </Card>
-              );
-            })}
-          </div>
-
-          <div className="mt-10">
-            <Link href="/evaluations" className="btn-secondary">
-              How evaluations work <ArrowRight size={16} />
-            </Link>
-          </div>
+      <Section light className="mt-16 sm:mt-20">
+        <h2 className="text-2xl sm:text-3xl">Supporting tracks (all stages)</h2>
+        <p className="mt-3 max-w-2xl text-ink/60">
+          Every cohort runs with two coordinators alongside the technical
+          curriculum.
+        </p>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {supportingTracks.map((track, i) => {
+            const Icon = trackIcons[i] ?? UserCog;
+            return (
+              <Card light key={track.role}>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <Icon size={20} />
+                </div>
+                <h3 className="mt-4 text-lg">{track.role}</h3>
+                <p className="mt-2 text-sm text-ink/70">{track.summary}</p>
+              </Card>
+            );
+          })}
         </div>
-      </section>
+
+        <div className="mt-10">
+          <Link href="/evaluations" className="btn-blue">
+            How evaluations work <ArrowRight size={16} />
+          </Link>
+        </div>
+      </Section>
     </>
   );
 }

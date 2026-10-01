@@ -17,7 +17,7 @@ export default function TermsPage() {
       <PageHeader eyebrow="Legal" title="Terms & Conditions" />
       <Section>
         <div className="prose-legal">
-          <p className="rounded-lg bg-orange-50 p-4 text-sm text-orange-600">
+          <p className="rounded-xl border border-orange-500/30 bg-orange/10 p-4 text-sm text-orange-100">
             TODO: These terms are a working draft and must be reviewed by legal
             before publication.
           </p>
@@ -61,7 +61,7 @@ export default function TermsPage() {
           <h2>4. Fees and payments</h2>
           <p>
             Fees, payment plans, and collection methods are described on the{" "}
-            <Link href="/fees" className="text-blue-600 underline">
+            <Link href="/fees" className="text-blue-400 underline">
               Fees
             </Link>{" "}
             page and are payable in Indian Rupees (INR). Monthly plans are
@@ -71,7 +71,7 @@ export default function TermsPage() {
           <h2>5. Refunds</h2>
           <p>
             Refunds are governed by our{" "}
-            <Link href="/legal/refund" className="text-blue-600 underline">
+            <Link href="/legal/refund" className="text-blue-400 underline">
               Refund Policy
             </Link>
             , which forms part of these terms.
@@ -102,7 +102,7 @@ export default function TermsPage() {
           <h2>9. Contact</h2>
           <p>
             Questions about these terms can be sent via our{" "}
-            <Link href="/contact" className="text-blue-600 underline">
+            <Link href="/contact" className="text-blue-400 underline">
               Contact
             </Link>{" "}
             page.

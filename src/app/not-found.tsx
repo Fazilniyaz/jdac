@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/Section";
 export default function NotFound() {
   return (
     <Section className="py-24 text-center sm:py-32">
-      <p className="eyebrow">404</p>
+      <span className="eyebrow-pill">404</span>
       <h1 className="mt-3 text-4xl">Page not found</h1>
       <p className="mx-auto mt-4 max-w-md text-ink/70">
         The page you&apos;re looking for doesn&apos;t exist or may have moved.

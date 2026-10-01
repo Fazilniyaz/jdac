@@ -30,9 +30,20 @@ const config: Config = {
         },
         navy: {
           DEFAULT: "#0B1F33",
+          900: "#07131F",
           800: "#0E2A45",
           700: "#13395C",
           600: "#1C4D78",
+        },
+        // Dark theme base + panels (from the reference agency site).
+        night: {
+          DEFAULT: "#081421",
+          800: "#0B1C2C",
+          700: "#0F2335",
+        },
+        panel: {
+          DEFAULT: "#0E1F30",
+          soft: "#12283C",
         },
         ink: "#040707",
         mist: "#F2F6FA",
@@ -44,10 +55,20 @@ const config: Config = {
         display: ["var(--font-space-grotesk)", "var(--font-inter)", "sans-serif"],
       },
       maxWidth: {
-        content: "72rem",
+        content: "78rem",
       },
       boxShadow: {
         card: "0 1px 2px rgba(11,31,51,0.06), 0 8px 24px rgba(11,31,51,0.08)",
+        float: "0 10px 40px rgba(0,0,0,0.35)",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 32s linear infinite",
       },
     },
   },

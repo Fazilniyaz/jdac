@@ -50,11 +50,11 @@ export default function AboutPage() {
             const Icon = p.icon;
             return (
               <Card key={p.title}>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
                   <Icon size={20} />
                 </div>
                 <h3 className="mt-4 text-lg">{p.title}</h3>
-                <p className="mt-2 text-sm text-ink/70">{p.body}</p>
+                <p className="mt-2 text-sm text-slate-400">{p.body}</p>
               </Card>
             );
           })}
@@ -62,14 +62,12 @@ export default function AboutPage() {
       </Section>
 
       {/* Outcome honesty */}
-      <section className="bg-mist">
-        <div className="container-page py-16 sm:py-20">
-          <Card className="border-navy/15 bg-navy text-white">
-            <h2 className="text-2xl text-white">The outcome, stated plainly</h2>
-            <p className="mt-3 max-w-3xl text-white/80">{overview.outcome}</p>
-          </Card>
-        </div>
-      </section>
+      <Section className="pt-0">
+        <Card className="border-blue-500/30 bg-blue-500/10">
+          <h2 className="text-2xl text-white">The outcome, stated plainly</h2>
+          <p className="mt-3 max-w-3xl text-slate-200">{overview.outcome}</p>
+        </Card>
+      </Section>
 
       {/* Offices */}
       <Section>
@@ -77,7 +75,7 @@ export default function AboutPage() {
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {offices.map((o) => (
             <Card key={`${o.city}-${o.country}`}>
-              <div className="flex items-center gap-2 text-blue-600">
+              <div className="flex items-center gap-2 text-blue-400">
                 <MapPin size={18} />
                 <span className="text-xs font-semibold uppercase tracking-wider">
                   {o.country}
@@ -87,7 +85,7 @@ export default function AboutPage() {
             </Card>
           ))}
         </div>
-        <p className="mt-6 text-sm text-ink/60">{company.footerLine}</p>
+        <p className="mt-6 text-sm text-slate-400">{company.footerLine}</p>
         <div className="mt-8">
           <Link href="/apply" className="btn-primary">
             Apply Now <ArrowRight size={16} />

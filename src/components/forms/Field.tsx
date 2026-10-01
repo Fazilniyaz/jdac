@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 
 const baseInput =
-  "mt-1.5 w-full rounded-lg border border-steel bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 focus:border-blue disabled:opacity-60";
+  "mt-1.5 w-full rounded-xl border border-white/15 bg-night-800 px-3 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-blue disabled:opacity-60";
 
 export function Label({
   htmlFor,
@@ -13,9 +13,9 @@ export function Label({
   required?: boolean;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block text-sm font-medium text-navy">
+    <label htmlFor={htmlFor} className="block text-sm font-medium text-slate-200">
       {children}
-      {required && <span className="ml-0.5 text-red" aria-hidden>*</span>}
+      {required && <span className="ml-0.5 text-orange" aria-hidden>*</span>}
     </label>
   );
 }
@@ -23,7 +23,7 @@ export function Label({
 export function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1 text-xs font-medium text-red-600">
+    <p id={id} className="mt-1 text-xs font-medium text-red-300">
       {message}
     </p>
   );

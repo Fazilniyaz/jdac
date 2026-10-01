@@ -35,13 +35,13 @@ export default function FeesPage() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <SectionHeading title="Stage-wise fees" />
-            <div className="mt-6 overflow-x-auto rounded-2xl border border-steel/70 shadow-card">
+            <div className="mt-6 overflow-x-auto rounded-3xl border border-white/10 shadow-float">
               <table className="w-full min-w-[520px] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   Fees by enrolment option and payment plan
                 </caption>
                 <thead>
-                  <tr className="bg-navy text-white">
+                  <tr className="bg-night-800 text-white">
                     <th scope="col" className="px-5 py-3 font-semibold">Option</th>
                     <th scope="col" className="px-5 py-3 font-semibold">Duration</th>
                     <th scope="col" className="px-5 py-3 font-semibold">One-time</th>
@@ -50,19 +50,19 @@ export default function FeesPage() {
                 </thead>
                 <tbody>
                   {feeOptions.map((o, i) => (
-                    <tr key={o.id} className={i % 2 === 0 ? "bg-white" : "bg-mist"}>
-                      <th scope="row" className="px-5 py-4 align-top font-semibold text-navy">
+                    <tr key={o.id} className={i % 2 === 0 ? "bg-panel" : "bg-night-800/40"}>
+                      <th scope="row" className="px-5 py-4 align-top font-semibold text-white">
                         {o.label}
                       </th>
-                      <td className="px-5 py-4 align-top text-ink/70">
+                      <td className="px-5 py-4 align-top text-slate-400">
                         {o.durationMonths} months
                       </td>
-                      <td className="px-5 py-4 align-top font-semibold text-navy">
+                      <td className="px-5 py-4 align-top font-semibold text-blue-300">
                         {formatINR(o.oneTime)}
                       </td>
-                      <td className="px-5 py-4 align-top text-ink/70">
+                      <td className="px-5 py-4 align-top text-slate-400">
                         {formatINR(o.monthlyAmount)} × {o.monthlyCount}
-                        <span className="block text-xs text-ink/50">
+                        <span className="block text-xs text-slate-500">
                           = {formatINR(monthlyTotal(o))}
                         </span>
                       </td>
@@ -71,7 +71,7 @@ export default function FeesPage() {
                 </tbody>
               </table>
             </div>
-            <ul className="mt-4 space-y-1.5 text-sm text-ink/60">
+            <ul className="mt-4 space-y-1.5 text-sm text-slate-400">
               <li>• {feeNotes.oneTimeWhen}</li>
               <li>• {feeNotes.monthlyWhen}</li>
               <li>• {feeNotes.monthlyPremium}</li>
@@ -83,26 +83,24 @@ export default function FeesPage() {
       </Section>
 
       {/* Internship-linked adjustments */}
-      <section className="bg-mist">
-        <div className="container-page py-16 sm:py-20">
-          <SectionHeading
-            eyebrow="You may pay less"
-            title="Internship-linked fee adjustments"
-            lead="As you progress, your fees can go down."
-          />
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {feeAdjustments.map((adj) => (
-              <Card key={adj.trigger}>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-                  <Percent size={20} />
-                </div>
-                <h3 className="mt-4 text-base">{adj.trigger}</h3>
-                <p className="mt-2 text-sm text-ink/70">{adj.effect}</p>
-              </Card>
-            ))}
-          </div>
+      <Section light>
+        <SectionHeading
+          eyebrow="You may pay less"
+          title="Internship-linked fee adjustments"
+          lead="As you progress, your fees can go down."
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {feeAdjustments.map((adj) => (
+            <Card light key={adj.trigger}>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <Percent size={20} />
+              </div>
+              <h3 className="mt-4 text-base">{adj.trigger}</h3>
+              <p className="mt-2 text-sm text-ink/70">{adj.effect}</p>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Refund policy */}
       <Section>
@@ -113,19 +111,19 @@ export default function FeesPage() {
         />
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <Card className="border-red/30">
-            <Badge tone="muted" className="bg-red/10 text-red-600">
+            <Badge tone="muted" className="bg-red/15 text-red-300">
               <ShieldAlert size={14} /> One-time payment
             </Badge>
-            <p className="mt-3 text-sm text-ink/75">{refundPolicy.oneTime}</p>
+            <p className="mt-3 text-sm text-slate-300">{refundPolicy.oneTime}</p>
           </Card>
-          <Card className="border-blue-200">
+          <Card className="border-blue-500/30">
             <Badge tone="blue">
               <Wallet size={14} /> Monthly installments
             </Badge>
-            <p className="mt-3 text-sm text-ink/75">{refundPolicy.monthly}</p>
+            <p className="mt-3 text-sm text-slate-300">{refundPolicy.monthly}</p>
           </Card>
         </div>
-        <p className="mt-4 text-sm text-ink/60">{refundPolicy.method}</p>
+        <p className="mt-4 text-sm text-slate-400">{refundPolicy.method}</p>
         <div className="mt-6">
           <Link href="/legal/refund" className="btn-outline">
             Read the full refund policy <ArrowRight size={16} />
@@ -134,12 +132,11 @@ export default function FeesPage() {
       </Section>
 
       {/* Collection */}
-      <section className="bg-navy text-white">
-        <div className="container-page py-16 sm:py-20">
+      <section className="bg-night-800">
+        <div className="container-page py-20 sm:py-28">
           <SectionHeading
             eyebrow="How payments are collected"
-            title={<span className="text-white">Secure, automated payments</span>}
-            className="[&_p]:text-white/70"
+            title="Secure, automated payments"
           />
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {feeCollection.map((c) => (
