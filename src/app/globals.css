@@ -177,11 +177,3 @@
     transition-duration: 0.01ms !important;
   }
 }
-
-/* Ropix voice-widget launcher: its "Talk to us" pill reports a box narrower
-   than its own label, so the vendor iframe clips the text on the right. Give
-   the iframe a minimum width so the full launcher shows. Harmless for the
-   expanded call card, which is already wider than this. */
-iframe[src*="ropix.ai"] {
-  min-width: 11rem !important;
-}
