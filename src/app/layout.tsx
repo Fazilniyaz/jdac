@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -74,6 +75,38 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/* Ropix voice widget ("Sophia"). The data-widget value is a public
+            publishable key tied to this site, not a secret. */}
+        <Script
+          src="https://app.ropix.ai/widget.js"
+          data-widget="pk_8d72243dd8e850b8120c6ba9fa1865887fb9ee1c5f887a35"
+          data-position="bottom-right"
+          data-offset-x="1.25"
+          data-offset-y="1.25"
+          data-launcher="1"
+          data-collapsed-w="9.52"
+          data-collapsed-h="2.8"
+          strategy="afterInteractive"
+        />
+        <noscript>
+          <iframe
+            src="https://app.ropix.ai/w/pk_8d72243dd8e850b8120c6ba9fa1865887fb9ee1c5f887a35"
+            title="Talk to Sophia"
+            allow="microphone; autoplay"
+            style={{
+              position: "fixed",
+              bottom: "1.25rem",
+              right: "1.25rem",
+              width: "360px",
+              height: "640px",
+              maxWidth: "100%",
+              border: 0,
+              zIndex: 2147483647,
+              background: "transparent",
+            }}
+          />
+        </noscript>
       </body>
     </html>
   );
