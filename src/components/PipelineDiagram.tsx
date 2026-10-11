@@ -1,104 +1,69 @@
 import { ArrowRight, CheckCircle2, Lock, Trophy, Briefcase } from "lucide-react";
 import { stages, overview } from "@/content/academy";
-import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/Reveal";
 
-const stageDot: Record<string, string> = {
-  frontend: "bg-blue text-white",
-  backend: "bg-orange text-white",
-  agentic: "bg-white text-navy",
-};
-
-const stageGlow: Record<string, string> = {
-  frontend: "from-blue-500/20",
-  backend: "from-orange-500/20",
-  agentic: "from-white/10",
+const stageNumber: Record<string, string> = {
+  frontend: "bg-[#4599d3] text-white",
+  backend: "bg-[#f05623] text-white",
+  agentic: "bg-[#0b3b5c] text-white ring-1 ring-white/25",
 };
 
 /**
- * Visual of the full train-to-hire path:
- * Stage 1 → Frontend Evaluation → Stage 2 → Backend Evaluation → Stage 3 →
- * Capstone → 6-month internship → Full-time offer.
+ * The full train-to-hire path: three gated stages, then the internship and the
+ * full-time offer.
  */
 export function PipelineDiagram({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="space-y-5">
-      <ol className="grid gap-5 lg:grid-cols-3">
-        {stages.map((stage) => (
-          <li
-            key={stage.id}
-            className={cn(
-              "relative overflow-hidden rounded-3xl border border-white/10 bg-panel p-6 shadow-float"
-            )}
-          >
-            <div
-              aria-hidden
-              className={cn(
-                "pointer-events-none absolute -top-16 right-0 h-40 w-40 rounded-full bg-gradient-to-b to-transparent blur-2xl",
-                stageGlow[stage.id]
-              )}
-            />
-            <div className="relative flex items-center gap-3">
-              <span
-                className={cn(
-                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold",
-                  stageDot[stage.id]
-                )}
-              >
+    <div className="space-y-4">
+      <ol className="grid gap-4 lg:grid-cols-3">
+        {stages.map((stage, i) => (
+          <Reveal as="li" key={stage.id} delay={i * 90} className="card flex flex-col">
+            <div className="flex items-center gap-3">
+              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-display text-sm font-semibold ${stageNumber[stage.id]}`}>
                 {stage.index}
               </span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  {stage.months}
-                </p>
-                <h3 className="text-lg leading-tight text-white">{stage.name}</h3>
+                <p className="jx-label text-[11px] text-muted">{stage.months}</p>
+                <h3 className="text-[17px] leading-tight">{stage.name}</h3>
               </div>
             </div>
-
-            {!compact && (
-              <p className="relative mt-4 text-sm text-slate-400">{stage.summary}</p>
-            )}
-
-            <div className="relative mt-5 rounded-2xl border border-white/10 bg-night-800/60 p-4">
-              <p className="flex items-center gap-1.5 text-xs font-semibold text-slate-200">
-                <Lock size={13} className="text-blue-400" />
+            {!compact && <p className="mt-4 text-sm text-ink-2">{stage.summary}</p>}
+            <div className="mt-5 border-t border-line pt-4">
+              <p className="flex items-center gap-1.5 text-[13px] font-semibold text-ink">
+                <Lock size={13} className="text-accent" />
                 Gate: {stage.gate.name}
               </p>
-              <p className="mt-1 text-xs text-slate-500">{stage.gate.when}</p>
-              <p className="mt-2 flex items-start gap-1.5 text-xs text-emerald-400">
-                <CheckCircle2 size={13} className="mt-0.5 shrink-0" />
+              <p className="mt-1 text-[13px] text-muted">{stage.gate.when}</p>
+              <p className="mt-2 flex items-start gap-1.5 text-[13px] text-success">
+                <CheckCircle2 size={14} className="mt-0.5 shrink-0" />
                 <span>Pass → {stage.internRole} + unlock next stage</span>
               </p>
             </div>
-          </li>
+          </Reveal>
         ))}
       </ol>
 
-      {/* Downstream: internship → full-time */}
-      <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
-        <div className="flex flex-1 items-center gap-3 rounded-3xl border border-blue-500/30 bg-blue-500/10 p-6">
-          <Briefcase className="shrink-0 text-blue-300" />
+      <Reveal delay={240} className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+        <div className="card-flat flex flex-1 items-center gap-4 border-l-[3px] border-l-brand">
+          <Briefcase className="shrink-0 text-accent" />
           <div>
-            <h3 className="text-base leading-tight text-white">
-              {overview.internshipMonths}-month paid internship
-            </h3>
-            <p className="mt-0.5 text-sm text-slate-400">
+            <h3 className="text-base leading-tight">{overview.internshipMonths}-month paid internship</h3>
+            <p className="mt-0.5 text-sm text-ink-2">
               Each cleared gate unlocks the matching internship (capacity permitting).
             </p>
           </div>
         </div>
-        <ArrowRight className="hidden shrink-0 text-slate-500 sm:block" aria-hidden />
-        <div className="flex flex-1 items-center gap-3 rounded-3xl border border-orange-500/30 bg-orange-500/10 p-6">
-          <Trophy className="shrink-0 text-orange" />
+        <ArrowRight className="hidden shrink-0 text-muted sm:block" aria-hidden />
+        <div className="card-flat flex flex-1 items-center gap-4 border-l-[3px] border-l-spark">
+          <Trophy className="shrink-0 text-spark" />
           <div>
-            <h3 className="text-base leading-tight text-white">
-              Full-time offer at Jadvix LTD
-            </h3>
-            <p className="mt-0.5 text-sm text-slate-400">
+            <h3 className="text-base leading-tight">Full-time offer at Jadvix LTD</h3>
+            <p className="mt-0.5 text-sm text-ink-2">
               A direct pathway, based on internship performance — not a guaranteed job.
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

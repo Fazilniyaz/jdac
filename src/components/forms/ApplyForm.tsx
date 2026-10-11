@@ -51,10 +51,10 @@ export function ApplyForm() {
 
   if (status === "done" && result?.ok) {
     return (
-      <div className="card text-center" role="status" aria-live="polite">
-        <CheckCircle2 className="mx-auto text-emerald-400" size={40} />
+      <div className="card p-8 text-center" role="status" aria-live="polite">
+        <CheckCircle2 className="mx-auto text-success" size={40} />
         <h3 className="mt-4 text-xl">Application received</h3>
-        <p className="mx-auto mt-2 max-w-md text-sm text-slate-400">
+        <p className="mx-auto mt-2 max-w-md text-sm text-ink-2">
           {result.message}
         </p>
         <button
@@ -63,7 +63,7 @@ export function ApplyForm() {
             setStatus("idle");
             setResult(null);
           }}
-          className="btn-outline mt-6"
+          className="btn btn-ghost mt-6"
         >
           Submit another application
         </button>
@@ -72,7 +72,7 @@ export function ApplyForm() {
   }
 
   return (
-    <form className="card space-y-5" onSubmit={onSubmit} noValidate>
+    <form className="card space-y-5 p-6 sm:p-8" onSubmit={onSubmit} noValidate>
       {/* Honeypot — hidden from humans. */}
       <div aria-hidden className="hidden">
         <label htmlFor={honeypotField}>Company website (leave blank)</label>
@@ -145,19 +145,19 @@ export function ApplyForm() {
       </div>
 
       {result && !result.ok && (
-        <p role="alert" className="rounded-xl border border-red/30 bg-red/15 px-4 py-3 text-sm text-red-200">
+        <p role="alert" className="note note-warn">
           {result.message}
         </p>
       )}
 
-      <button type="submit" className="btn-primary w-full" disabled={status === "submitting"}>
+      <button type="submit" className="btn btn-spark w-full" disabled={status === "submitting"}>
         {status === "submitting" ? (
           <><Loader2 size={16} className="animate-spin" /> Submitting…</>
         ) : (
           <>Submit application <Send size={16} /></>
         )}
       </button>
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-muted">
         By submitting you agree to be contacted about your enquiry. We don&apos;t
         share your details with third parties.
       </p>

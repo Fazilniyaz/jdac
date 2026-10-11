@@ -1,24 +1,40 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { IntroCurtain } from "@/components/IntroCurtain";
 import { company, siteUrl } from "@/content/academy";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+// Same typefaces as jadvix.uk: Clash Display (headings), Satoshi (body/UI),
+// Space Grotesk (micro-labels only). Clash + Satoshi are self-hosted.
+const display = localFont({
+  src: [
+    { path: "./fonts/ClashDisplay-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ClashDisplay-Semibold.woff2", weight: "600", style: "normal" },
+  ],
   display: "swap",
+  variable: "--font-display",
+});
+const body = localFont({
+  src: [
+    { path: "./fonts/Satoshi-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-body",
+});
+const label = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500"],
+  display: "swap",
+  variable: "--font-label",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-});
-
-const description = `${company.academyName} — ${company.tagline}. A ${company.programType} with a 6-month paid internship and a direct pathway to employment at ${company.legalName}.`;
+const description = `${company.academyName}, a ${company.legalName} product — ${company.tagline}. A ${company.programType} with a 6-month paid internship and a direct pathway to employment at ${company.legalName}.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,6 +46,7 @@ export const metadata: Metadata = {
   applicationName: company.academyName,
   keywords: [
     "Jadvix Academy",
+    "Jadvix",
     "Full Stack Development",
     "Agentic AI",
     "train to hire",
@@ -58,15 +75,35 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#041826",
+  width: "device-width",
+  initialScale: 1,
+};
+
+/*
+ * Runs before first paint, so neither the theme nor the intro flashes.
+ * - Theme: saved choice (`jx-theme`, same key as jadvix.uk), else light.
+ * - Intro: once per browser session, never for reduced motion. The attribute is
+ *   removed after the curtain has lifted so later navigations are not delayed.
+ */
+const prePaint = `(function(){var d=document.documentElement;try{d.dataset.theme=localStorage.getItem('jx-theme')||'light'}catch(e){d.dataset.theme='light'}try{var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(!rm&&!sessionStorage.getItem('jx-intro')){sessionStorage.setItem('jx-intro','1');d.setAttribute('data-intro','');setTimeout(function(){d.removeAttribute('data-intro')},2100)}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${display.variable} ${body.variable} ${label.variable}`}
+    >
       <body className="flex min-h-dvh flex-col">
+        <script dangerouslySetInnerHTML={{ __html: prePaint }} />
+        <IntroCurtain />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>

@@ -13,7 +13,8 @@ Development with Agentic AI*. Frontend only — **no backend, no database**.
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS
 - Static export (`output: "export"` in `next.config.ts`) — deploy-ready for Vercel
   and any static host
-- `lucide-react` icons; `next/font` (Space Grotesk display, Inter body)
+- `lucide-react` icons; fonts shared with jadvix.uk: Clash Display (headings) and
+  Satoshi (body), self-hosted in `src/app/fonts/`, plus Space Grotesk for labels
 - `zod` validation; `vitest` unit tests
 
 ## The one rule: single source of truth
@@ -36,9 +37,24 @@ list — everything. Pages and components import from there.
   SVGs, copied from the jadvix.uk site (`jadvix-main-26/public/`); keep the two
   in sync. The favicon `src/app/icon.svg` is the logo's mark only, cropped
   square from the same artwork.
-- **Colors** (tokens in `tailwind.config.ts`): Blue `#4599D3`, Red `#E01E26`,
-  Orange `#F05623`, Navy `#0B1F33`, Ink `#040707`, greys `#F2F6FA` / `#D5DEE7`.
-  **Navy dominant, blue primary accent, orange for CTAs, red sparingly.**
+- **Design system = the company site's.** The Academy is a Jadvix product, so it uses
+  the jadvix.uk (`jadvix-main-26`) tokens: brand blue `#1fa6e0`, navy `#041826`,
+  one coral "spark" CTA (`btn-spark`, `#ff6a2c`) per screen, Clash Display +
+  Satoshi. Classes live in `src/app/globals.css` (`card`, `btn`, `jx-*`).
+- **Theme:** light by default, dark via `html[data-theme="dark"]` (toggle in the
+  header, stored in `localStorage["jx-theme"]`, same key as jadvix.uk). Use the
+  theme tokens (`bg-surface`, `text-ink`, `text-ink-2`, `border-line`, ...),
+  never fixed dark/light colours, or one theme breaks. `Section tone="navy"` is a
+  theme-independent navy band. Tailwind opacity modifiers (`/50`) do not work on
+  the CSS-variable colours.
+- **Radii are restrained** (inputs 8 · cards 12 · panels 18); buttons stay pills.
+- **Imagery:** photos in `public/images/` (WebP, ~50–90 KB). Two were generated
+  for this site; the rest come from the jadvix.uk library. Do not use the team
+  portraits from jadvix.uk here — on the Academy they would read as instructors.
+- **Motion:** opening intro (`IntroCurtain`, once per session), hero word rise,
+  scroll `Reveal`. All of it switches off for `prefers-reduced-motion`.
+- **After changing `tailwind.config.ts`, restart `npm run dev`** — the running
+  dev server keeps the old config and new colour classes silently do nothing.
 - The **blue/red/orange tri-color stripe** (`TriStripe`, `.tri-stripe`) is a
   recurring brand motif.
 - Tone: confident, clear, honest, professional — not hype. Modern, technical

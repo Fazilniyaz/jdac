@@ -1,33 +1,40 @@
 import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/Reveal";
 
 /**
- * A vertical page section. `light` renders a light surface band (dark text);
- * otherwise it sits on the dark page background.
+ * A vertical page section. `tone`: "base" sits on the page canvas, "band" is the
+ * alternate surface, "navy" is the theme-independent navy feature band.
  */
 export function Section({
   children,
   className,
   containerClassName,
   id,
-  light = false,
+  tone = "base",
 }: {
   children: React.ReactNode;
   className?: string;
   containerClassName?: string;
   id?: string;
-  light?: boolean;
+  tone?: "base" | "band" | "navy";
 }) {
   return (
     <section
       id={id}
-      className={cn("py-20 sm:py-28", light && "surface-light", className)}
+      className={cn(
+        "jx-section",
+        tone === "band" && "jx-band",
+        tone === "navy" && "jx-navy",
+        className
+      )}
     >
-      <div className={cn("container-page", containerClassName)}>{children}</div>
+      {tone === "navy" && <div aria-hidden className="jx-glow -right-48 -top-64" />}
+      <div className={cn("container-page relative", containerClassName)}>{children}</div>
     </section>
   );
 }
 
-/** Section heading: optional eyebrow pill, a title, and an optional lead. */
+/** Section heading: optional eyebrow, a title, and an optional lead. Reveals on scroll. */
 export function SectionHeading({
   eyebrow,
   title,
@@ -42,18 +49,10 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("max-w-3xl", center && "mx-auto text-center", className)}>
-      {eyebrow ? (
-        <p className={cn("mb-5", center && "justify-center")}>
-          <span className="eyebrow-pill">{eyebrow}</span>
-        </p>
-      ) : null}
-      <h2 className="text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{title}</h2>
-      {lead ? (
-        <p className="mt-5 text-lg text-slate-400 [.surface-light_&]:text-ink/60">
-          {lead}
-        </p>
-      ) : null}
-    </div>
+    <Reveal className={cn("max-w-3xl", center && "mx-auto text-center", className)}>
+      {eyebrow ? <span className="jx-eyebrow mb-5">{eyebrow}</span> : null}
+      <h2 className="jx-display-lg mt-5">{title}</h2>
+      {lead ? <p className="jx-lead mt-5">{lead}</p> : null}
+    </Reveal>
   );
 }

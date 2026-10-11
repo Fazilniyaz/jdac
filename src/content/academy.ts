@@ -20,6 +20,7 @@ export const company = {
   tagline: "Full Stack Development with Agentic AI",
   programType: "10-month, milestone-gated, train-to-hire program",
   footerLine: "Jadvix LTD · Ruislip, UK · Chennai & Coimbatore, India",
+  parentUrl: "https://jadvix.uk",
 } as const;
 
 /** Office locations. Keep factual — do not invent addresses. */
@@ -29,15 +30,13 @@ export const offices = [
   { city: "Coimbatore", country: "India", region: "in" },
 ] as const;
 
-/**
- * Contact details are placeholders until confirmed. Read from env where set,
- * otherwise show a clearly-marked TODO. See CLAUDE.md.
- */
+/** Confirmed contact details (Jadvix LTD). `tel` is E.164 for tel: links. */
 export const contact = {
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "TODO: add academy email",
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "TODO: add contact number",
-  emailIsPlaceholder: !process.env.NEXT_PUBLIC_CONTACT_EMAIL,
-  phoneIsPlaceholder: !process.env.NEXT_PUBLIC_CONTACT_PHONE,
+  email: "contact@jadvix.uk",
+  phones: [
+    { region: "UK", display: "+44 7723 456955", tel: "+447723456955" },
+    { region: "India", display: "+91 99523 64055", tel: "+919952364055" },
+  ],
 } as const;
 
 export const siteUrl =
@@ -455,7 +454,6 @@ export const TODOS = [
   "Operations: exact intern capacity per cohort and cohort start dates (not confirmed).",
   "Fees: internship stipend amount (intentionally not published).",
   "Fees: international pricing — only INR is currently defined.",
-  "Contact: confirm academy email and phone number (currently placeholders).",
   "Legal: Privacy Policy is a draft and must be reviewed by legal.",
   "Forms: wire Apply/Contact forms to a real endpoint (currently stubbed, no storage).",
 ] as const;

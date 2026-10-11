@@ -3,36 +3,36 @@ import { cn } from "@/lib/cn";
 export function Card({
   children,
   className,
-  light = false,
+  hover = false,
 }: {
   children: React.ReactNode;
   className?: string;
-  light?: boolean;
+  hover?: boolean;
 }) {
-  return <div className={cn(light ? "card-light" : "card", className)}>{children}</div>;
+  return <div className={cn("card", hover && "jx-hover", className)}>{children}</div>;
 }
 
-/** A small pill/badge. */
+/** A small label badge. */
 export function Badge({
   children,
-  tone = "blue",
+  tone = "brand",
   className,
 }: {
   children: React.ReactNode;
-  tone?: "blue" | "navy" | "orange" | "muted" | "outline";
+  tone?: "brand" | "spark" | "neutral" | "outline" | "danger";
   className?: string;
 }) {
   const tones = {
-    blue: "bg-blue-500/15 text-blue-300",
-    navy: "bg-white/10 text-white",
-    orange: "bg-orange/15 text-orange-100",
-    muted: "bg-white/5 text-slate-300",
-    outline: "border border-white/15 bg-transparent text-slate-200",
+    brand: "bg-brand/10 text-accent",
+    spark: "bg-spark/15 text-[#c2410c] [html[data-theme=dark]_&]:text-spark",
+    neutral: "bg-surface-2 text-ink-2",
+    outline: "border border-line text-ink-2",
+    danger: "bg-[#e01e26]/10 text-[#b91c1c] [html[data-theme=dark]_&]:text-[#f87171]",
   } as const;
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider",
+        "jx-label inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px]",
         tones[tone],
         className
       )}

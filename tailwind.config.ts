@@ -1,75 +1,58 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Brand tokens derive from the Jadvix logo. Navy dominates, blue is the primary
- * accent, orange drives CTAs, red is used sparingly. See CLAUDE.md "Brand rules".
+ * Jadvix design system — the same tokens as the jadvix.uk company site, so the
+ * Academy reads as a Jadvix product. Theme-aware colours resolve to CSS
+ * variables in src/app/globals.css (light by default, `html[data-theme=dark]`).
+ * Brand colours from the logo stay fixed. See CLAUDE.md "Brand rules".
  */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        blue: {
-          DEFAULT: "#4599D3",
-          50: "#EAF4FB",
-          100: "#D5E9F6",
-          200: "#AED4EC",
-          300: "#86BEE2",
-          400: "#4599D3",
-          500: "#2E82BF",
-          600: "#246699",
-          700: "#1B4D73",
-        },
-        red: { DEFAULT: "#E01E26", 600: "#C01118" },
-        orange: {
-          DEFAULT: "#F05623",
-          50: "#FEF0EB",
-          100: "#FBDACE",
-          500: "#F05623",
-          600: "#D4430F",
-        },
-        navy: {
-          DEFAULT: "#0B1F33",
-          900: "#07131F",
-          800: "#0E2A45",
-          700: "#13395C",
-          600: "#1C4D78",
-        },
-        // Dark theme base + panels (from the reference agency site).
-        night: {
-          DEFAULT: "#081421",
-          800: "#0B1C2C",
-          700: "#0F2335",
-        },
-        panel: {
-          DEFAULT: "#0E1F30",
-          soft: "#12283C",
-        },
-        ink: "#040707",
-        mist: "#F2F6FA",
-        steel: "#D5DEE7",
+        // theme-aware surfaces + text
+        bg: "var(--bg)",
+        surface: "var(--surface)",
+        "surface-2": "var(--surface-2)",
+        line: "var(--line)",
+        ink: "var(--ink)",
+        "ink-2": "var(--ink-2)",
+        muted: "var(--muted)",
+        accent: "var(--accent-text)",
+        // fixed brand
+        brand: { DEFAULT: "#1fa6e0", ink: "#0a7cb0" },
+        spark: { DEFAULT: "#ff6a2c", hover: "#ff7f47" },
+        navy: { DEFAULT: "#041826", 900: "#041826", 800: "#071f30", 700: "#0b3b5c" },
+        "on-navy": { DEFAULT: "#eaeff6", 2: "#a7b4c4" },
+        // logo tri-colour (stripe motif)
+        logo: { blue: "#4599D3", red: "#E01E26", orange: "#F05623" },
+        success: "#16a34a",
       },
       fontFamily: {
-        // Wired up via next/font CSS variables in layout.tsx.
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        label: ["var(--font-label)", "system-ui", "sans-serif"],
       },
-      maxWidth: {
-        content: "78rem",
+      maxWidth: { content: "1240px" },
+      borderRadius: {
+        input: "var(--r-input)",
+        card: "var(--r-card)",
+        panel: "var(--r-panel)",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(11,31,51,0.06), 0 8px 24px rgba(11,31,51,0.08)",
-        float: "0 10px 40px rgba(0,0,0,0.35)",
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        glow: "0 30px 80px -30px rgba(31, 166, 224, 0.35)",
       },
+      transitionTimingFunction: { jx: "cubic-bezier(0.22, 0.61, 0.36, 1)" },
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
       },
-      animation: {
-        marquee: "marquee 32s linear infinite",
-      },
+      animation: { marquee: "marquee 40s linear infinite" },
     },
   },
   plugins: [],

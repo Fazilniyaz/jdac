@@ -1,32 +1,16 @@
-import Image from "next/image";
-
 /**
  * Official Jadvix logo (mark + wordmark), the same artwork as jadvix.uk.
- * Use `variant="light"` (white wordmark) on dark/navy backgrounds and the
- * default dark wordmark on light backgrounds. Never recolor, stretch, or crop.
- * Intrinsic ratio 2826:654 (≈ 4.32:1); width/height prevent layout shift.
+ * Both variants are rendered and CSS shows the right one for the theme
+ * (dark wordmark on light, white wordmark on dark / navy bands), so there is no
+ * flash on load. Never recolor, stretch, or crop. Ratio 2826:654 (≈ 4.32:1).
  */
-export function Logo({
-  variant = "dark",
-  className,
-  priority = false,
-}: {
-  variant?: "dark" | "light";
-  className?: string;
-  priority?: boolean;
-}) {
-  const src =
-    variant === "light"
-      ? "/brand/jadvix-logo-light.svg"
-      : "/brand/jadvix-logo.svg";
+export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
   return (
-    <Image
-      src={src}
-      alt="Jadvix"
-      width={173}
-      height={40}
-      priority={priority}
-      className={className}
-    />
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element -- static SVG */}
+      <img src="/brand/jadvix-logo.svg" alt="Jadvix" width={173} height={40} className={`logo-on-light ${className}`} />
+      {/* eslint-disable-next-line @next/next/no-img-element -- static SVG */}
+      <img src="/brand/jadvix-logo-light.svg" alt="Jadvix" width={173} height={40} className={`logo-on-dark ${className}`} />
+    </>
   );
 }

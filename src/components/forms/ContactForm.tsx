@@ -44,16 +44,16 @@ export function ContactForm() {
 
   if (status === "done" && result?.ok) {
     return (
-      <div className="card text-center" role="status" aria-live="polite">
-        <CheckCircle2 className="mx-auto text-emerald-400" size={40} />
+      <div className="card p-8 text-center" role="status" aria-live="polite">
+        <CheckCircle2 className="mx-auto text-success" size={40} />
         <h3 className="mt-4 text-xl">Message sent</h3>
-        <p className="mx-auto mt-2 max-w-md text-sm text-slate-400">{result.message}</p>
+        <p className="mx-auto mt-2 max-w-md text-sm text-ink-2">{result.message}</p>
       </div>
     );
   }
 
   return (
-    <form className="card space-y-5" onSubmit={onSubmit} noValidate>
+    <form className="card space-y-5 p-6 sm:p-8" onSubmit={onSubmit} noValidate>
       <div aria-hidden className="hidden">
         <label htmlFor={`${honeypotField}-c`}>Company website (leave blank)</label>
         <input id={`${honeypotField}-c`} name={honeypotField} type="text" tabIndex={-1} autoComplete="off" />
@@ -76,12 +76,12 @@ export function ContactForm() {
       </div>
 
       {result && !result.ok && (
-        <p role="alert" className="rounded-xl border border-red/30 bg-red/15 px-4 py-3 text-sm text-red-200">
+        <p role="alert" className="note note-warn">
           {result.message}
         </p>
       )}
 
-      <button type="submit" className="btn-primary w-full" disabled={status === "submitting"}>
+      <button type="submit" className="btn btn-spark w-full" disabled={status === "submitting"}>
         {status === "submitting" ? (
           <><Loader2 size={16} className="animate-spin" /> Sending…</>
         ) : (

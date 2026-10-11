@@ -20,14 +20,14 @@ export function FeeCalculator() {
   const quote = quoteFee(selection, plan);
 
   return (
-    <div className="card">
+    <div className="card p-6 sm:p-7">
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue text-white">
+        <div className="icon-tile">
           <Calculator size={20} />
         </div>
         <div>
-          <h3 className="text-lg text-white">Fee calculator</h3>
-          <p className="text-sm text-slate-400">
+          <h3 className="text-lg">Fee calculator</h3>
+          <p className="text-sm text-ink-2">
             Estimate your total for a stage or the full pipeline.
           </p>
         </div>
@@ -38,7 +38,7 @@ export function FeeCalculator() {
         <div>
           <label
             htmlFor={selectId}
-            className="block text-sm font-medium text-slate-200"
+            className="block text-[13.5px] font-semibold text-ink-2"
           >
             What do you want to enrol in?
           </label>
@@ -46,11 +46,11 @@ export function FeeCalculator() {
             id={selectId}
             value={selection}
             onChange={(e) => setSelection(e.target.value as FeeSelection)}
-            className="mt-2 w-full rounded-xl border border-white/15 bg-night-800 px-3 py-2.5 text-sm text-white focus:border-blue"
+            className="field mt-2"
           >
             {feeOptions.map((o) => (
-              <option key={o.id} value={o.id} className="bg-night-800 text-white">
-                {o.label} ({o.durationMonths} months)
+              <option key={o.id} value={o.id}>
+                {o.label}
               </option>
             ))}
           </select>
@@ -58,7 +58,7 @@ export function FeeCalculator() {
 
         {/* Plan */}
         <div>
-          <span className="block text-sm font-medium text-slate-200">
+          <span className="block text-[13.5px] font-semibold text-ink-2">
             Payment plan
           </span>
           <div
@@ -74,10 +74,10 @@ export function FeeCalculator() {
                 aria-checked={plan === p}
                 onClick={() => setPlan(p)}
                 className={cn(
-                  "rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors",
+                  "rounded-input border px-3 py-2.5 text-sm font-medium transition-colors",
                   plan === p
-                    ? "border-blue bg-blue-500/15 text-blue-200"
-                    : "border-white/15 bg-night-800 text-slate-400 hover:border-blue/50"
+                    ? "border-brand bg-brand/10 text-accent"
+                    : "border-line bg-surface text-ink-2 hover:border-brand"
                 )}
               >
                 {p === "oneTime" ? "One-time" : "Monthly"}
@@ -88,24 +88,24 @@ export function FeeCalculator() {
       </div>
 
       {/* Result */}
-      <div className="mt-6 rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-600/20 to-night p-6">
-        <p className="text-sm text-slate-300">Total payable</p>
-        <p className="mt-1 font-display text-4xl font-bold text-white">
+      <div className="mt-6 rounded-card bg-navy p-6 text-on-navy">
+        <p className="text-sm text-on-navy-2">Total payable</p>
+        <p className="mt-1 font-display text-4xl font-semibold text-white">
           {formatINR(quote.total)}
         </p>
 
         {quote.monthly ? (
-          <p className="mt-2 text-sm text-slate-300">
+          <p className="mt-2 text-sm text-on-navy-2">
             {formatINR(quote.monthly.amount)} × {quote.monthly.count} months
             {" "}
             (auto-debited)
           </p>
         ) : (
-          <p className="mt-2 text-sm text-slate-300">Paid once at enrollment</p>
+          <p className="mt-2 text-sm text-on-navy-2">Paid once at enrollment</p>
         )}
 
         {plan === "monthly" && quote.premiumAmount > 0 && (
-          <p className="mt-4 flex items-center gap-2 rounded-xl bg-orange/15 px-3 py-2 text-sm text-orange-100">
+          <p className="mt-4 flex items-center gap-2 rounded-input bg-spark/15 px-3 py-2 text-sm text-[#ffb08f]">
             <TrendingUp size={16} className="shrink-0" />
             {formatINR(quote.premiumAmount)} more than one-time (
             {formatPercent(quote.premiumRate)} premium for admin overhead)
@@ -113,7 +113,7 @@ export function FeeCalculator() {
         )}
       </div>
 
-      <p className="mt-3 text-xs text-slate-500">
+      <p className="mt-3 text-xs text-muted">
         Estimate only. Internship-linked adjustments may reduce what you
         actually pay — see the adjustments below. All fees in INR.
       </p>

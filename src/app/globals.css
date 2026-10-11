@@ -2,134 +2,425 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    color-scheme: dark;
-  }
+/* ============================================================
+   JADVIX DESIGN SYSTEM — shared with jadvix.uk (jadvix-main-26)
+   Clash Display (display) · Satoshi (body/UI) · Space Grotesk (labels)
+   Light canvas by default; dark via html[data-theme="dark"].
+   Spark (coral) = the single key CTA per viewport.
+   Radii are deliberately restrained: inputs 8 · cards 12 · panels 18.
+   ============================================================ */
+:root {
+  --navy-900: #041826;
+  --navy-800: #071f30;
+  --navy-700: #0b3b5c;
+  --brand: #1fa6e0;
+  --brand-ink: #0a7cb0;
+  --brand-ink-hover: #0a6fa0;
+  --brand-text: #0a6fa0;
+  --spark: #ff6a2c;
+  --spark-hover: #ff7f47;
+  --on-spark: #041826;
 
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --line: rgba(9, 25, 40, 0.1);
+  --ink: #0c1520;
+  --ink-2: #48566a;
+  --muted: #6b7889;
+  --accent-text: var(--brand-text);
+
+  --on-navy: #eaeff6;
+  --on-navy-2: #a7b4c4;
+  --line-navy: rgba(255, 255, 255, 0.1);
+
+  --r-input: 8px;
+  --r-card: 12px;
+  --r-panel: 18px;
+  --shadow-sm: 0 1px 2px rgba(6, 20, 35, 0.06);
+  --shadow-md: 0 18px 40px -22px rgba(6, 20, 35, 0.22);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.7s;
+  --section-gap: clamp(80px, 12vh, 150px);
+
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  --bg: #06090f;
+  --surface: #0c131c;
+  --surface-2: #111a26;
+  --line: rgba(255, 255, 255, 0.08);
+  --ink: #eaeff6;
+  --ink-2: #a7b4c4;
+  --muted: #7d8a9b;
+  --accent-text: var(--brand);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 18px 40px -20px rgba(0, 0, 0, 0.65);
+  color-scheme: dark;
+}
+
+@layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
-
-  /* Dark-first theme (premium agency look). */
   body {
-    @apply bg-night text-slate-300 antialiased;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
   }
-
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display font-bold tracking-tight text-white;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    word-spacing: 0.08em;
+    color: var(--ink);
     text-wrap: balance;
   }
-
-  /* Inside a light surface, flip text + headings back to dark ink. */
-  .surface-light {
-    @apply bg-mist text-ink/80;
-  }
-  .surface-light :is(h1, h2, h3, h4) {
-    @apply text-navy;
-  }
-
   ::selection {
-    @apply bg-blue/30 text-white;
+    background: rgba(31, 166, 224, 0.28);
   }
-
-  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    @apply outline-none ring-2 ring-blue ring-offset-2 ring-offset-night;
-  }
-  .surface-light :where(a, button, input, select, textarea):focus-visible {
-    @apply ring-offset-white;
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
 @layer components {
+  /* ---------- layout ---------- */
   .container-page {
-    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-content px-5 sm:px-6;
+  }
+  .jx-section {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+  }
+  .jx-band {
+    background: var(--surface-2);
+  }
+  /* Navy band: theme-independent, the company site's feature-section look. */
+  .jx-navy {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy-900);
+    color: var(--on-navy);
+    --ink: #eaeff6;
+    --ink-2: #a7b4c4;
+    --muted: #7d8a9b;
+    --line: rgba(255, 255, 255, 0.1);
+    --surface: #071f30;
+    --surface-2: #0b2a40;
+    --accent-text: var(--brand);
+  }
+  .jx-glow {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(31, 166, 224, 0.28), transparent 62%);
+    pointer-events: none;
   }
 
-  .tri-stripe {
-    background-image: linear-gradient(
-      to right,
-      theme("colors.blue.DEFAULT") 0 33.333%,
-      theme("colors.red.DEFAULT") 33.333% 66.666%,
-      theme("colors.orange.DEFAULT") 66.666% 100%
-    );
+  /* ---------- type ---------- */
+  .jx-display-xl {
+    word-spacing: 0.08em;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-size: clamp(46px, 6.4vw, 88px);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.03em;
   }
-
-  /* Accent word inside a heading (the blue segment). */
+  .jx-display-lg {
+    word-spacing: 0.08em;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-size: clamp(34px, 4.2vw, 56px);
+    line-height: 1.06;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  .jx-headline {
+    word-spacing: 0.06em;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.18;
+    font-weight: 600;
+  }
+  .jx-lead {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
   .accent {
-    @apply text-blue-400;
+    color: var(--accent-text);
   }
-  .surface-light .accent {
-    @apply text-blue-600;
+  .jx-label {
+    font-family: var(--font-label), system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
-  .surface-light .link-arrow {
-    @apply text-blue-600 hover:text-blue-700;
+  .jx-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 14px 6px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-2);
+    font-family: var(--font-label), system-ui, sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    white-space: nowrap;
   }
-
-  /* Eyebrow pill: • LABEL inside a rounded outline. */
-  .eyebrow-pill {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-200;
-  }
-  .eyebrow-pill::before {
+  .jx-eyebrow::before {
     content: "";
-    @apply h-1.5 w-1.5 rounded-full bg-blue-400;
-  }
-  .surface-light .eyebrow-pill {
-    @apply border-navy/10 bg-white text-navy/80 shadow-card;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+    flex-shrink: 0;
   }
 
-  /* Buttons — rounded-full pills. */
+  /* ---------- buttons ---------- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease),
+      border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+  .btn svg {
+    transition: transform 0.25s var(--ease);
+  }
+  .btn:hover svg {
+    transform: translateX(3px);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+  }
+  .btn-sm {
+    min-height: 40px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+  /* The single key CTA (coral). */
+  .btn-spark {
+    background: var(--spark);
+    color: var(--on-spark);
+  }
+  .btn-spark:hover {
+    background: var(--spark-hover);
+    box-shadow: 0 14px 30px -14px rgba(255, 106, 44, 0.75);
   }
   .btn-primary {
-    @apply btn bg-orange text-white hover:bg-orange-600 focus-visible:ring-orange;
+    background: var(--brand-ink);
+    color: #fff;
   }
-  .btn-blue {
-    @apply btn bg-blue text-white hover:bg-blue-500 focus-visible:ring-blue;
+  .btn-primary:hover {
+    background: var(--brand-ink-hover);
+    box-shadow: 0 12px 28px -14px rgba(10, 124, 176, 0.7);
   }
-  .btn-secondary {
-    @apply btn bg-white text-navy hover:bg-slate-100 focus-visible:ring-white;
+  .btn-ink {
+    background: var(--ink);
+    color: var(--bg);
   }
-  /* Outline on dark surfaces. */
-  .btn-outline {
-    @apply btn border border-white/25 bg-transparent text-white hover:border-white/60 hover:bg-white/5 focus-visible:ring-white;
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--ink);
   }
-  /* Outline on light surfaces. */
-  .btn-outline-dark {
-    @apply btn border border-navy/20 bg-transparent text-navy hover:border-blue hover:text-blue focus-visible:ring-blue;
+  .btn-ghost:hover {
+    border-color: var(--brand);
   }
-
-  /* Dark card / panel. */
-  .card {
-    @apply rounded-3xl border border-white/10 bg-panel p-6 shadow-float;
-  }
-  /* Light card. */
-  .card-light {
-    @apply rounded-3xl border border-steel/60 bg-white p-6 text-ink/80 shadow-card;
-  }
-  .card-light :is(h1, h2, h3, h4) {
-    @apply text-navy;
-  }
-
-  /* Thin line-art illustration panel (top of a service card). */
-  .artframe {
-    @apply flex items-center justify-center rounded-2xl border border-blue/15 bg-gradient-to-br from-navy-800 to-night text-blue-400;
+  .jx-navy .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
   }
 
   .link-arrow {
-    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 transition-colors hover:text-blue-300;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent-text);
+  }
+  .link-arrow svg {
+    transition: transform 0.25s var(--ease);
+  }
+  .link-arrow:hover svg {
+    transform: translateX(4px);
   }
 
-  .prose-legal {
-    @apply max-w-3xl space-y-4 text-[15px] leading-relaxed text-slate-300;
+  /* ---------- cards ---------- */
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+      box-shadow 0.35s var(--ease), background-color 0.3s var(--ease);
   }
-  .prose-legal :is(h2, h3) {
-    @apply text-white;
+  .card-flat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    padding: 24px;
+  }
+  .jx-hover:hover {
+    transform: translateY(-5px);
+    border-color: var(--brand);
+  }
+  .icon-tile {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--brand) 12%, transparent);
+    color: var(--accent-text);
+    flex-shrink: 0;
+  }
+  .note {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--brand);
+    border-radius: var(--r-input);
+    background: var(--surface-2);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .note-warn {
+    border-left-color: var(--spark);
+  }
+
+  /* Image frame: photo with a soft navy grade so stock-free imagery stays on-brand. */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-card);
+    background: var(--navy-900);
+  }
+  .photo img {
+    transition: transform 0.9s var(--ease);
+  }
+  .jx-hover:hover .photo img,
+  .photo-zoom:hover img {
+    transform: scale(1.04);
+  }
+
+  /* ---------- tables ---------- */
+  .jx-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14.5px;
+  }
+  .jx-table thead th {
+    background: var(--surface-2);
+    color: var(--ink);
+    font-weight: 600;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .jx-table tbody th,
+  .jx-table tbody td {
+    padding: 16px 20px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+  .jx-table tbody tr:last-child th,
+  .jx-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .jx-table tbody th {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .jx-table tbody td {
+    color: var(--ink-2);
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    background: var(--surface);
+  }
+
+  /* ---------- forms ---------- */
+  .field {
+    margin-top: 6px;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--r-input);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 12px 14px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .field:hover {
+    border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  }
+  .field:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+  }
+  .field::placeholder {
+    color: var(--muted);
+  }
+
+  /* ---------- brand motif ---------- */
+  .tri-stripe {
+    background-image: linear-gradient(
+      to right,
+      #4599d3 0 33.333%,
+      #e01e26 33.333% 66.666%,
+      #f05623 66.666% 100%
+    );
+  }
+
+  /* ---------- legal prose ---------- */
+  .prose-legal {
+    @apply max-w-3xl space-y-4 text-[15px] leading-relaxed;
+    color: var(--ink-2);
   }
   .prose-legal h2 {
     @apply pt-4 text-xl;
@@ -141,39 +432,186 @@
     @apply list-disc space-y-2 pl-6;
   }
   .prose-legal a {
-    @apply text-blue-400 underline;
+    color: var(--accent-text);
+    text-decoration: underline;
   }
 }
 
 @layer utilities {
-  /* Mask edges of the marquee row so it fades in/out. */
   .mask-x {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* ============================================================
+   MOTION
+   ============================================================ */
+/* scroll reveal (components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes jx-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
   }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* hero headline: word-by-word rise, held until the intro curtain lifts */
+.jx-word {
+  display: inline-block;
+  animation: jx-rise 0.8s var(--ease) both;
+  animation-delay: calc(var(--intro-delay, 0ms) + var(--i, 0) * 90ms + 80ms);
+}
+.jx-rise {
+  animation: jx-rise 0.8s var(--ease) both;
+  animation-delay: calc(var(--intro-delay, 0ms) + var(--d, 0ms));
+}
+@keyframes jx-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+.jx-settle {
+  animation: jx-settle 0.7s var(--ease) both;
+  animation-delay: var(--intro-delay, 0ms);
+}
+@keyframes jx-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.jx-float {
+  animation: jx-float 6s ease-in-out infinite;
+  animation-delay: var(--fd, 0s);
+}
+@keyframes jx-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+    clip-path: inset(8% 0 8% 0 round 18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0 round 18px);
+  }
+}
+.jx-photo-in {
+  animation: jx-photo-in 1.1s var(--ease) both;
+  animation-delay: calc(var(--intro-delay, 0ms) + 200ms);
+}
+
+/* ---------- opening intro (components/IntroCurtain.tsx) ----------
+   Navy curtain: the Jadvix mark draws in, the stripe sweeps, the curtain lifts.
+   Once per browser session; skipped outright for reduced motion. While it plays,
+   html[data-intro] holds the hero animations back by --intro-delay. */
+html[data-intro] {
+  --intro-delay: 1250ms;
+}
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--navy-900);
+  animation: intro-lift 0.75s var(--ease) 1.05s both;
+}
+html:not([data-intro]) .intro {
+  display: none;
+}
+.intro-mark {
+  width: 88px;
+  height: 88px;
+  animation: intro-mark 0.7s var(--ease) both;
+}
+.intro-word {
+  margin-top: 18px;
+  color: #eaeff6;
+  font-family: var(--font-label), system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  animation: jx-rise 0.6s var(--ease) 0.25s both;
+}
+.intro-stripe {
+  margin-top: 18px;
+  height: 3px;
+  width: 140px;
+  transform-origin: left;
+  animation: intro-sweep 0.6s var(--ease) 0.35s both;
+}
+@keyframes intro-mark {
+  from {
+    opacity: 0;
+    transform: scale(0.82) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intro-sweep {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes intro-lift {
+  to {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
+/* ---- reduced motion: everything off ---- */
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .intro {
+    display: none;
+  }
+}
+
+/* Logo variant per theme: dark wordmark on light, white wordmark on dark. */
+html[data-theme="dark"] .logo-on-light,
+html:not([data-theme="dark"]) .logo-on-dark {
+  display: none;
+}
+.jx-navy .logo-on-light {
+  display: none !important;
+}
+.jx-navy .logo-on-dark {
+  display: block !important;
 }

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin, AlertTriangle } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { Reveal } from "@/components/Reveal";
 import { contact, offices, company } from "@/content/academy";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Jadvix Academy. Send us a message or reach our offices in Ruislip (UK), Chennai, and Coimbatore (India).",
+    "Get in touch with Jadvix Academy — email contact@jadvix.uk, call the UK or India team, or send us a message. Offices in Ruislip (UK), Chennai, and Coimbatore (India).",
   alternates: { canonical: "/contact" },
 };
 
@@ -18,61 +20,65 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Talk to us"
-        lead="Questions about the program, fees, or the next cohort? Send a message and we'll get back to you."
+        lead="Questions about the program, fees, or the next cohort? Call, email, or send a message — our UK and India teams reply within one working day."
       />
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <aside>
-            <h2 className="text-2xl">Reach us</h2>
-
-            <div className="mt-6 space-y-4">
-              <div className="flex items-start gap-3">
-                <Mail size={20} className="mt-0.5 shrink-0 text-blue-400" />
-                <div>
-                  <p className="text-sm font-medium text-white">Email</p>
-                  <p className="text-sm text-slate-400">{contact.email}</p>
-                  {contact.emailIsPlaceholder && <TodoTag />}
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone size={20} className="mt-0.5 shrink-0 text-blue-400" />
-                <div>
-                  <p className="text-sm font-medium text-white">Phone / WhatsApp</p>
-                  <p className="text-sm text-slate-400">{contact.phone}</p>
-                  {contact.phoneIsPlaceholder && <TodoTag />}
-                </div>
-              </div>
-            </div>
-
-            <h3 className="mt-8 text-lg">Offices</h3>
-            <ul className="mt-4 space-y-3">
-              {offices.map((o) => (
-                <li key={`${o.city}-${o.country}`} className="flex items-start gap-3">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-blue-400" />
-                  <span className="text-sm text-slate-300">
-                    {o.city}, {o.country}
-                  </span>
+            <Reveal>
+              <h2 className="jx-headline">Reach us</h2>
+              <ul className="mt-6 divide-y divide-[var(--line)] border-y border-line">
+                <li>
+                  <a href={`mailto:${contact.email}`} className="group flex items-center gap-4 py-5">
+                    <span className="icon-tile">
+                      <Mail size={19} />
+                    </span>
+                    <span>
+                      <span className="jx-label block text-[11px] text-muted">Email</span>
+                      <span className="text-lg font-medium text-ink group-hover:text-accent">{contact.email}</span>
+                    </span>
+                  </a>
                 </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-xs text-slate-500">{company.footerLine}</p>
+                {contact.phones.map((p) => (
+                  <li key={p.tel}>
+                    <a href={`tel:${p.tel}`} className="group flex items-center gap-4 py-5">
+                      <span className="icon-tile">
+                        <Phone size={19} />
+                      </span>
+                      <span>
+                        <span className="jx-label block text-[11px] text-muted">
+                          Phone / WhatsApp · {p.region}
+                        </span>
+                        <span className="text-lg font-medium text-ink group-hover:text-accent">{p.display}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal delay={90}>
+              <h3 className="mt-10 text-lg">Offices</h3>
+              <ul className="mt-4 space-y-3">
+                {offices.map((o) => (
+                  <li key={`${o.city}-${o.country}`} className="flex items-center gap-3 text-[15px] text-ink-2">
+                    <MapPin size={17} className="shrink-0 text-accent" />
+                    {o.city}, {o.country}
+                  </li>
+                ))}
+              </ul>
+              <div className="photo mt-8 aspect-[16/8]">
+                <Image src="/images/contact.webp" alt="The Jadvix brand mark in a digital workspace" fill sizes="(min-width: 1024px) 520px, 100vw" className="object-cover" />
+              </div>
+              <p className="mt-4 text-xs text-muted">{company.footerLine}</p>
+            </Reveal>
           </aside>
 
-          <ContactForm />
+          <Reveal delay={120}>
+            <ContactForm />
+          </Reveal>
         </div>
       </Section>
     </>
-  );
-}
-
-/** Visible marker that a contact detail is a placeholder (see guardrails). */
-function TodoTag() {
-  return (
-    <div className="mt-2 flex items-center gap-2 rounded-xl border border-orange-500/40 bg-orange/10 px-3 py-2">
-      <AlertTriangle size={14} className="shrink-0 text-orange" />
-      <span className="text-xs text-orange-100">
-        TODO: set a real value via NEXT_PUBLIC_CONTACT_* env.
-      </span>
-    </div>
   );
 }

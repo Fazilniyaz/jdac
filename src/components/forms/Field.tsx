@@ -1,8 +1,5 @@
 import { cn } from "@/lib/cn";
 
-const baseInput =
-  "mt-1.5 w-full rounded-xl border border-white/15 bg-night-800 px-3 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-blue disabled:opacity-60";
-
 export function Label({
   htmlFor,
   children,
@@ -13,9 +10,9 @@ export function Label({
   required?: boolean;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block text-sm font-medium text-slate-200">
+    <label htmlFor={htmlFor} className="block text-[13.5px] font-semibold text-ink-2">
       {children}
-      {required && <span className="ml-0.5 text-orange" aria-hidden>*</span>}
+      {required && <span className="ml-0.5 text-spark" aria-hidden>*</span>}
     </label>
   );
 }
@@ -23,33 +20,23 @@ export function Label({
 export function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1 text-xs font-medium text-red-300">
+    <p id={id} className="mt-1 text-xs font-medium text-[#dc2626] [html[data-theme=dark]_&]:text-[#f87171]">
       {message}
     </p>
   );
 }
 
-export function TextInput({
-  className,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) {
-  return <input className={cn(baseInput, className)} {...props} />;
+export function TextInput({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {
+  return <input className={cn("field", className)} {...props} />;
 }
 
-export function TextArea({
-  className,
-  ...props
-}: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <textarea className={cn(baseInput, "min-h-24", className)} {...props} />;
+export function TextArea({ className, ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+  return <textarea className={cn("field min-h-24", className)} {...props} />;
 }
 
-export function Select({
-  className,
-  children,
-  ...props
-}: React.SelectHTMLAttributes<HTMLSelectElement>) {
+export function Select({ className, children, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
-    <select className={cn(baseInput, className)} {...props}>
+    <select className={cn("field", className)} {...props}>
       {children}
     </select>
   );

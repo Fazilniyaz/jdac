@@ -16,7 +16,7 @@ export default function RefundPolicyPage() {
       <PageHeader eyebrow="Legal" title="Refund Policy" />
       <Section>
         <div className="prose-legal">
-          <p className="text-slate-500">Last updated: on enrolment terms in force at the time of payment.</p>
+          <p className="text-muted">Last updated: on enrolment terms in force at the time of payment.</p>
 
           <h2>1. One-time payments</h2>
           <p>{refundPolicy.oneTime}</p>
@@ -49,7 +49,7 @@ export default function RefundPolicyPage() {
             this policy to your original payment method.
           </p>
 
-          <p className="rounded-xl border border-white/10 bg-night-800/60 p-4 text-sm text-slate-400">
+          <p className="note">
             This refund policy forms part of the Jadvix Academy Terms &amp;
             Conditions. Where this page and the Terms differ on refunds, this
             page prevails.

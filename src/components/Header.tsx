@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { navLinks } from "@/content/academy";
 import { cn } from "@/lib/cn";
 
+/** Floating pill header — kept as its own element above the page, as before. */
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -20,26 +22,26 @@ export function Header() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 pt-4">
+    <header className="jx-settle sticky top-0 z-50 pt-4">
       <div className="container-page">
-        <div className="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-night-800/80 px-4 py-2.5 shadow-float backdrop-blur-xl sm:px-5">
+        <div className="flex items-center justify-between gap-4 rounded-full border border-line bg-[color-mix(in_srgb,var(--surface)_86%,transparent)] px-4 py-2 shadow-md backdrop-blur-xl sm:px-5">
           <Link href="/" aria-label="Jadvix Academy — home" className="flex shrink-0 items-center gap-3">
-            <Logo variant="light" priority className="h-7 w-auto sm:h-8" />
-            <span aria-hidden className="border-l border-white/20 pl-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
+            <Logo className="h-7 w-auto sm:h-8" />
+            <span aria-hidden className="jx-label border-l border-line pl-3 text-[11px] text-ink-2">
               Academy
             </span>
           </Link>
 
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
+          <nav aria-label="Primary" className="hidden xl:block">
+            <ul className="flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-colors hover:text-white",
-                      isActive(link.href) && "bg-white/10 text-white"
+                      "whitespace-nowrap rounded-full px-3.5 py-2 text-[14.5px] font-medium text-ink-2 transition-colors hover:text-ink",
+                      isActive(link.href) && "bg-surface-2 text-ink"
                     )}
                   >
                     {link.label}
@@ -50,12 +52,13 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link href="/apply" className="btn-secondary hidden h-10 px-5 py-0 text-sm sm:inline-flex">
+            <ThemeToggle />
+            <Link href="/apply" className="btn btn-ink btn-sm hidden sm:inline-flex">
               Apply Now <ArrowUpRight size={16} />
             </Link>
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10 lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-surface-2 xl:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -70,7 +73,7 @@ export function Header() {
           <nav
             id="mobile-nav"
             aria-label="Mobile"
-            className="mt-2 rounded-3xl border border-white/10 bg-night-800/95 p-3 shadow-float backdrop-blur-xl lg:hidden"
+            className="mt-2 rounded-panel border border-line bg-surface p-3 shadow-md xl:hidden"
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -79,8 +82,8 @@ export function Header() {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "block rounded-2xl px-4 py-3 text-base font-medium text-slate-300 hover:bg-white/10 hover:text-white",
-                      isActive(link.href) && "bg-white/10 text-white"
+                      "block rounded-card px-4 py-3 text-base font-medium text-ink-2 hover:bg-surface-2 hover:text-ink",
+                      isActive(link.href) && "bg-surface-2 text-ink"
                     )}
                   >
                     {link.label}
@@ -88,7 +91,7 @@ export function Header() {
                 </li>
               ))}
               <li className="pt-1">
-                <Link href="/apply" className="btn-primary w-full">
+                <Link href="/apply" className="btn btn-spark w-full">
                   Apply Now <ArrowUpRight size={16} />
                 </Link>
               </li>

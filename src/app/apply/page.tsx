@@ -3,6 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { ApplyForm } from "@/components/forms/ApplyForm";
+import { Reveal } from "@/components/Reveal";
 import { overview, keyStats } from "@/content/academy";
 
 export const metadata: Metadata = {
@@ -22,27 +23,27 @@ export default function ApplyPage() {
       />
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-          <aside className="lg:pr-6">
-            <h2 className="text-2xl">What you&apos;re applying to</h2>
-            <p className="mt-3 text-slate-400">{overview.outcome}</p>
-            <ul className="mt-6 space-y-3">
+          <Reveal as="aside" className="lg:pr-6">
+            <h2 className="jx-headline">What you&apos;re applying to</h2>
+            <p className="mt-3 text-ink-2">{overview.outcome}</p>
+            <ul className="mt-6 divide-y divide-[var(--line)] border-y border-line">
               {keyStats.map((s) => (
-                <li key={s.label} className="flex items-start gap-3">
-                  <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-blue-400" />
-                  <span className="text-sm text-slate-300">
-                    <strong className="text-white">{s.value}</strong> — {s.label}
+                <li key={s.label} className="flex items-center gap-3 py-4">
+                  <CheckCircle2 size={19} className="shrink-0 text-accent" />
+                  <span className="text-[15px] text-ink-2">
+                    <strong className="font-semibold text-ink">{s.value}</strong> — {s.label}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 rounded-2xl border border-white/10 bg-night-800/60 p-4 text-xs text-slate-400">
-              Internship offers are capped by Jadvix LTD&apos;s confirmed intern
-              capacity per cohort. This is a direct pathway to employment, not a
-              guaranteed job.
+            <p className="note mt-6">
+              Internship offers are capped by Jadvix LTD&apos;s confirmed intern capacity per cohort.
+              This is a direct pathway to employment, not a guaranteed job.
             </p>
-          </aside>
-
-          <ApplyForm />
+          </Reveal>
+          <Reveal delay={120}>
+            <ApplyForm />
+          </Reveal>
         </div>
       </Section>
     </>
