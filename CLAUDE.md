@@ -32,8 +32,10 @@ list — everything. Pages and components import from there.
 ## Brand rules
 
 - **Logos** (`public/brand/`): white logo on dark/navy backgrounds, dark logo on
-  light. **Never recolor, stretch, or crop.** The current files are
-  **placeholders** — replace with the official SVGs (a TODO).
+  light. **Never recolor, stretch, or crop.** These are the official Jadvix
+  SVGs, copied from the jadvix.uk site (`jadvix-main-26/public/`); keep the two
+  in sync. The favicon `src/app/icon.svg` is the logo's mark only, cropped
+  square from the same artwork.
 - **Colors** (tokens in `tailwind.config.ts`): Blue `#4599D3`, Red `#E01E26`,
   Orange `#F05623`, Navy `#0B1F33`, Ink `#040707`, greys `#F2F6FA` / `#D5DEE7`.
   **Navy dominant, blue primary accent, orange for CTAs, red sparingly.**

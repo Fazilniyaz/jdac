@@ -456,7 +456,6 @@ export const TODOS = [
   "Fees: internship stipend amount (intentionally not published).",
   "Fees: international pricing — only INR is currently defined.",
   "Contact: confirm academy email and phone number (currently placeholders).",
-  "Brand: replace placeholder logos in /public/brand with the official Jadvix SVGs.",
   "Legal: Privacy Policy is a draft and must be reviewed by legal.",
   "Forms: wire Apply/Contact forms to a real endpoint (currently stubbed, no storage).",
 ] as const;

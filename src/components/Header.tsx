@@ -23,8 +23,11 @@ export function Header() {
     <header className="sticky top-0 z-50 pt-4">
       <div className="container-page">
         <div className="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-night-800/80 px-4 py-2.5 shadow-float backdrop-blur-xl sm:px-5">
-          <Link href="/" aria-label="Jadvix Academy — home" className="shrink-0">
+          <Link href="/" aria-label="Jadvix Academy — home" className="flex shrink-0 items-center gap-3">
             <Logo variant="light" priority className="h-7 w-auto sm:h-8" />
+            <span aria-hidden className="border-l border-white/20 pl-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
+              Academy
+            </span>
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
