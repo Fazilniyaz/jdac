@@ -2,17 +2,42 @@ JADVIX ACADEMY — VOICE AGENT KNOWLEDGE BASE
 ============================================
 
 Purpose: factual reference for the Jadvix Academy voice assistant. These are
-the facts the agent may state on a call. Fees and policy come from the Academy
-single source of truth. If a caller asks something not covered here, the agent
-says it is not certain and offers an advisor callback — it does not invent.
+the facts the agent may state. If a visitor asks something not covered here,
+the agent says it is not certain and points them to the Contact page or
+contact@jadvix.uk — it does not invent.
 
-Last updated: 2026-10-11 (keep in sync with the website content).
+Last updated: 2026-10-12 (keep in sync with the website content).
+
+
+=====================================================================
+READ THIS FIRST — EVERYTHING HERE IS SPOKEN ALOUD
+=====================================================================
+This file is read out by a voice. It therefore contains NO symbols, because a
+voice reads them literally and they come out wrong.
+
+  - There is no rupee symbol anywhere. Every amount is written in words and
+    ends with the word "rupees". Say it exactly as written.
+  - There is no multiplication sign. Monthly plans are written as a full
+    sentence, for example "seven thousand five hundred rupees a month for ten
+    months, which comes to seventy-five thousand rupees".
+  - There are no percent signs and no arrows.
+
+NEVER say "Rs", "Rs.", "INR", or "rupee symbol". NEVER say "times" between two
+numbers. Always say the word "rupees", and always say a monthly plan as the
+full sentence given in section seven.
+
+MAINTENANCE NOTE for whoever edits this file: the amounts are spelled out on
+purpose. Do not "tidy" them back into symbols or digits — that is exactly what
+made the agent say "R S" and read the multiplication sign aloud. The canonical
+numerals live on the website Fees page, and in the Academy content file in
+the website repository.
+=====================================================================
 
 
 1. THE COMPANY
 --------------
-- Legal name: Jadvix LTD (a UK software company).
-- Training arm: Jadvix Academy.
+- Legal name: Jadvix LTD, a UK software company.
+- Jadvix Academy is a Jadvix LTD product — its training arm.
 - Locations: Ruislip, United Kingdom; Chennai, India; Coimbatore, India.
 - Delivery of the course is run from Chennai and Coimbatore, with Jadvix LTD
   in the UK.
@@ -21,15 +46,15 @@ Last updated: 2026-10-11 (keep in sync with the website content).
 2. THE PROGRAM (OVERVIEW)
 -------------------------
 - One program: "Full Stack Development with Agentic AI".
-- Format: a 10-month, milestone-gated, train-to-hire program.
+- Format: a ten-month, milestone-gated, train-to-hire program.
 - Delivery: hybrid — online and offline. A student can take part from Chennai,
   Coimbatore, or remotely.
 - Three stages, in order:
-    Stage 1 — Frontend Development   (Months 1–4)
-    Stage 2 — Backend Development    (Months 5–8)
-    Stage 3 — Agentic AI             (Months 9–10)
+    Stage 1, Frontend Development, months one to four.
+    Stage 2, Backend Development, months five to eight.
+    Stage 3, Agentic AI, months nine and ten.
 - Each stage ends in an evaluation the student must clear to unlock the next
-  stage. Clearing a stage also earns a matching 6-month PAID internship.
+  stage. Clearing a stage also earns a matching six-month PAID internship.
 - AI-assisted engineering with Claude Code runs through the whole program —
   it is built in, not an add-on.
 - Learning is by building: guided, client-style project work and real
@@ -39,265 +64,304 @@ Last updated: 2026-10-11 (keep in sync with the website content).
       design and evaluation.
     English Coordinator — professional communication, client-facing
       readiness, spoken and written English coaching.
-- Certificate: UK-issued Jadvix Academy certificate.
+- Certificate: a UK-issued Jadvix Academy certificate.
 
 KEY STATS
-- 10 months of structured training.
-- 6 months of paid internship (per stage cleared).
-- Hybrid (online & offline) delivery.
-- UK-issued Jadvix Academy certificate.
+- Ten months of structured training.
+- Six months of paid internship, per stage cleared.
+- Hybrid delivery, online and offline.
+- A UK-issued Jadvix Academy certificate.
 
 
 3. THE STAGES AND GATES
 -----------------------
-Stage 1 — Frontend Development (Months 1–4)
+Stage 1, Frontend Development, months one to four
   Summary: core web, React, and AI-assisted engineering with Claude Code.
-  Evaluation: Frontend Evaluation at the end of Month 4.
-  On pass: Frontend Development Intern offer; cleared for Stage 2.
-  On fail: continue Stage 1; retry after 2 weeks (maximum 2 attempts).
+  Evaluation: the Frontend Evaluation, at the end of month four.
+  On pass: a Frontend Development Intern offer, and cleared for Stage 2.
+  On fail: continue Stage 1, and retry after two weeks. Maximum two attempts.
 
-Stage 2 — Backend Development (Months 5–8)
+Stage 2, Backend Development, months five to eight
   Summary: server-side fundamentals, data, and full stack integration with
   the student's Stage 1 work.
-  Evaluation: Backend Evaluation — TWO parts, both must be cleared:
-    - Practical test: a timed, hands-on backend test set by the Technical
+  Evaluation: the Backend Evaluation, which has TWO parts. Both must be
+  cleared:
+    - A practical test: a timed, hands-on backend test set by the Technical
       Coordinator.
-    - Full stack project: an individually assigned project (assigned to every
-      student) integrating Stage 1 and Stage 2 work.
-  When: end of Month 8.
-  On pass: Backend Development Intern offer; cleared for Stage 3.
-  On fail: continue Stage 2; retry after 2 weeks (maximum 2 attempts).
+    - A full stack project: an individually assigned project, given to every
+      student, integrating Stage 1 and Stage 2 work.
+  When: the end of month eight.
+  On pass: a Backend Development Intern offer, and cleared for Stage 3.
+  On fail: continue Stage 2, and retry after two weeks. Maximum two attempts.
 
-Stage 3 — Agentic AI (Months 9–10)
+Stage 3, Agentic AI, months nine and ten
   Summary: LLM-powered agents, tool use, and shipping a production-style
   agentic capstone.
-  Evaluation: Agentic AI Capstone at the end of Month 10 — a production-style
-  agentic feature reviewed against Jadvix engineering standards.
-  On pass: Agentic AI Development Intern offer (6 months).
-  On fail: continue Stage 3; retry after 2 weeks (maximum 2 attempts).
+  Evaluation: the Agentic AI Capstone, at the end of month ten — a
+  production-style agentic feature reviewed against Jadvix engineering
+  standards.
+  On pass: an Agentic AI Development Intern offer, for six months.
+  On fail: continue Stage 3, and retry after two weeks. Maximum two attempts.
 
 SEQUENTIAL RULE
 - Every evaluation must be cleared to unlock the next stage.
 - Backend cannot begin until the Frontend evaluation is cleared.
-- Agentic AI cannot begin until the Backend evaluation (test AND project) is
-  cleared.
-- The same sequential rule applies to lateral (single-stage) entry.
-- Each pass unlocks the matching 6-month paid internship.
+- Agentic AI cannot begin until the Backend evaluation is cleared, meaning
+  both the practical test and the project.
+- The same sequential rule applies to lateral entry, where someone joins for a
+  single stage.
+- Each pass unlocks the matching six-month paid internship.
 
 RETRY POLICY
 - A student who fails an evaluation stays in their current stage and keeps
   attending coursework.
-- They may retry after a 2-week cooling-off period.
-- Maximum of 2 attempts.
-- NOTE (not yet decided): what happens after both retry attempts are used up
-  is still being finalised. The agent must NOT invent an answer — offer an
-  advisor callback.
+- They may retry after a two-week cooling-off period.
+- A maximum of two attempts.
+- NOT YET DECIDED: what happens after both retry attempts are used up is still
+  being finalised. The agent must NOT invent an answer — point them to the
+  Contact page or contact@jadvix.uk.
 
 
 4. CURRICULUM (WHAT IS TAUGHT)
 ------------------------------
-Stage 1 — Frontend (Months 1–4)
-  - Core Frontend: HTML5, CSS3, JavaScript ES6+, responsive design, Git/GitHub
-    workflow.
+Stage 1, Frontend, months one to four
+  - Core Frontend: HTML5, CSS3, JavaScript ES6 and later, responsive design,
+    and the Git and GitHub workflow.
   - Modern Framework: React.js — components, hooks, state management, routing.
   - AI-Assisted Engineering: frontend enhancement and productivity workflows
     using Claude Code.
-  - Applied Practice: guided client-style project builds and code-review cycles.
+  - Applied Practice: guided client-style project builds and code-review
+    cycles.
 
-Stage 2 — Backend (Months 5–8)
-  - Server-Side Fundamentals: Node.js / Express or equivalent, REST API design,
-    authentication & authorization.
-  - Data: SQL & NoSQL design, query optimization, data modelling.
-  - Integration: full stack integration with Stage 1 frontend projects,
+Stage 2, Backend, months five to eight
+  - Server-Side Fundamentals: Node.js and Express or equivalent, REST API
+    design, authentication and authorization.
+  - Data: SQL and NoSQL design, query optimization, data modelling.
+  - Integration: full stack integration with Stage 1 frontend projects, and
     deployment basics.
   - Applied Practice: end-to-end feature delivery under code review.
   - Evaluation Project: an individually assigned full stack project.
 
-Stage 3 — Agentic AI (Months 9–10)
+Stage 3, Agentic AI, months nine and ten
   - Agentic Systems: LLM-powered agents, tool use, workflow automation.
   - Applied AI Engineering: building and shipping agentic features into full
     stack apps.
   - Capstone: a production-style agentic feature reviewed against Jadvix
     engineering standards.
 
-Technologies covered across the program: HTML & CSS, JavaScript, React,
-Node.js, REST APIs, SQL & NoSQL, Git & GitHub, Claude Code, Agentic AI, Full
-Stack.
+Technologies covered across the program: HTML and CSS, JavaScript, React,
+Node.js, REST APIs, SQL and NoSQL, Git and GitHub, Claude Code, Agentic AI,
+and full stack development.
 
-Supporting tracks (all stages): Technical Coordinator track and English
-Coordinator track (see section 2).
+Supporting tracks, across all stages: the Technical Coordinator track and the
+English Coordinator track. See section two.
 
 
 5. INTERNSHIP
 -------------
-- Length: 6 months per internship (one per stage cleared).
-- Stipend: PAID, as per Jadvix's internship policy. DO NOT state an amount —
-  the amount is intentionally not published.
-- Work: interns work on live or client-adjacent projects under the supervision
-  of the Technical Coordinator and an assigned engineering lead.
+- Length: six months per internship, one per stage cleared.
+- Stipend: it is PAID, as per Jadvix's internship policy. DO NOT state an
+  amount — the amount is intentionally not published.
+- Work: interns work on live or client-adjacent projects, under the
+  supervision of the Technical Coordinator and an assigned engineering lead.
 - Parallel coursework: Frontend and Backend interns may continue coursework in
   parallel with their internship.
 - Terms: interns sign standard confidentiality and IP assignment terms before
   starting.
 - Capacity: internship offers are capped by Jadvix LTD's confirmed intern
-  capacity per cohort. Clearing an evaluation keeps a student eligible but does
-  NOT guarantee a place.
+  capacity each cohort. Clearing an evaluation keeps a student eligible but
+  does NOT guarantee a place.
 
 INTERN ROLES BY STAGE
-- Stage 1 cleared -> Frontend Development Intern.
-- Stage 2 cleared -> Backend Development Intern.
-- Stage 3 cleared -> Agentic AI Development Intern.
+- Clearing Stage 1 leads to a Frontend Development Intern offer.
+- Clearing Stage 2 leads to a Backend Development Intern offer.
+- Clearing Stage 3 leads to an Agentic AI Development Intern offer.
 
 
 6. THE PATHWAY TO EMPLOYMENT (IMPORTANT WORDING)
 ------------------------------------------------
 - The program is "a direct pathway to full-time employment at Jadvix LTD"
-  after the 6-month internship.
-- It is subject to clearing each evaluation AND to Jadvix LTD's confirmed
-  intern capacity per cohort.
+  after the six-month internship.
+- It is subject to clearing each evaluation, AND to Jadvix LTD's confirmed
+  intern capacity each cohort.
 - This is NEVER a guaranteed job. The agent must always describe it as a
   pathway, never a guarantee.
-- Conversion to full-time (all three tracks) is based on: code-review scores,
-  sprint/task completion rate, reliability, and coordinator sign-off — leading
-  to a full-time offer at Jadvix LTD.
+- Conversion to full-time, across all three tracks, is based on code-review
+  scores, sprint and task completion rate, reliability, and coordinator
+  sign-off — leading to a full-time offer at Jadvix LTD.
 
 COMPLETION REWARD
-- Students who pass the Agentic AI capstone AND convert to full-time employment
-  receive:
-    - a 1 gram gold coin, and
-    - a UK-issued Jadvix Academy certificate.
+- Students who pass the Agentic AI capstone AND convert to full-time
+  employment receive a one gram gold coin and a UK-issued Jadvix Academy
+  certificate.
 
 
-7. FEES (INDIAN RUPEES, INR / ₹)
---------------------------------
-All students may be quoted these published fees. Two ways to pay: a one-time
-payment at enrollment, or a monthly plan (auto-debited). The monthly plan
-carries roughly a 15% premium to cover admin overhead.
+7. FEES (ALL AMOUNTS ARE IN INDIAN RUPEES)
+------------------------------------------
+Say every amount exactly as written below. Never say "Rs" or "INR". Never say
+"times" between two numbers.
 
-FULL PIPELINE (Stages 1–3, 10 months)
-  - One-time: ₹65,000
-  - Monthly plan: ₹7,500 per month × 10 months = ₹75,000 total
+There are two ways to pay: a one-time payment at enrolment, or a monthly plan
+that is auto-debited. The monthly plan carries roughly a fifteen percent
+premium, to cover admin overhead.
 
-STAGE 1 — FRONTEND (4 months)
-  - One-time: ₹26,000
-  - Monthly plan: ₹7,500 per month × 4 months = ₹30,000 total
+THE FULL PIPELINE — all three stages, ten months
+  - One-time: sixty-five thousand rupees.
+  - Monthly plan: seven thousand five hundred rupees a month for ten months,
+    which comes to seventy-five thousand rupees.
 
-STAGE 2 — BACKEND (4 months)
-  - One-time: ₹26,000
-  - Monthly plan: ₹7,500 per month × 4 months = ₹30,000 total
+STAGE 1, FRONTEND — four months
+  - One-time: twenty-six thousand rupees.
+  - Monthly plan: seven thousand five hundred rupees a month for four months,
+    which comes to thirty thousand rupees.
 
-STAGE 3 — AGENTIC AI (2 months)
-  - One-time: ₹15,000
-  - Monthly plan: ₹7,500 per month × 2 months = ₹15,000 total
+STAGE 2, BACKEND — four months
+  - One-time: twenty-six thousand rupees.
+  - Monthly plan: seven thousand five hundred rupees a month for four months,
+    which comes to thirty thousand rupees.
+
+STAGE 3, AGENTIC AI — two months
+  - One-time: fifteen thousand rupees.
+  - Monthly plan: seven thousand five hundred rupees a month for two months,
+    which comes to fifteen thousand rupees.
 
 WHEN FEES ARE PAID
-- One-time fees are paid at enrollment.
+- One-time fees are paid at enrolment.
 - Monthly fees are auto-debited.
 
-FEE ADJUSTMENTS (quote only as below)
-- Selected as a Frontend / Backend intern while continuing coursework: 50%
-  reduction on the remaining stage fee during the active internship.
+FEE ADJUSTMENTS (describe only as written here)
+- Selected as a Frontend or Backend intern while continuing coursework: a
+  fifty percent reduction on the remaining stage fee during the active
+  internship.
 - Converted to a full-time employee: any remaining course balance is waived.
-- Agentic AI capstone passed: no further course fees are due (all stages
-  complete).
+- Agentic AI capstone passed: no further course fees are due, as all stages
+  are complete.
 
 HOW TO PAY
-- Indian students: Razorpay (UPI Autopay for monthly debits).
-- International students: Stripe Billing (recurring card subscription, with
-  automated retry on failed payments).
+- Indian students: Razorpay, with UPI Autopay for monthly debits.
+- International students: Stripe Billing, a recurring card subscription with
+  automated retry on failed payments.
 
 INTERNATIONAL PRICING
-- Only Indian-rupee (INR) pricing is defined today. If an international caller
-  asks for their local price, the agent takes details and arranges a callback —
-  it does NOT convert or invent a figure.
+- Only Indian-rupee pricing is defined today. If someone asks for a price in
+  another currency, say that only rupee pricing is published, and point them
+  to the Contact page. Do NOT convert, and do NOT invent a figure.
 
 
 8. REFUND POLICY
 ----------------
-- One-time payment: NO refund. This applies to the full pipeline and to any
+- One-time payment: no refund. This applies to the full pipeline and to any
   single stage.
-- Monthly installments: if a student withdraws, the auto-debit is cancelled and
-  the current month's installment (if already debited) PLUS all remaining
-  months are refunded or not charged. Installments for completed months are NOT
-  refunded.
-- Method: refunds are returned to the original payment method via Razorpay or
-  Stripe.
-- Anything beyond this: offer an advisor callback.
+- Monthly instalments: if a student withdraws, the auto-debit is cancelled,
+  and the current month's instalment, if it has already been debited, plus all
+  remaining months, are refunded or not charged. Instalments for months
+  already completed are NOT refunded.
+- Method: refunds are returned to the original payment method, through
+  Razorpay or Stripe.
+- Anything beyond this: point them to the Refund Policy page or the Contact
+  page.
 
 
 9. FREQUENTLY ASKED QUESTIONS
 -----------------------------
 Q: How does the program work?
-A: It is a 10-month, milestone-gated program in three stages — Frontend,
+A: It is a ten-month, milestone-gated program in three stages — Frontend,
    Backend, then Agentic AI. Each stage ends in an evaluation you must clear to
-   unlock the next stage and a matching 6-month paid internship. Strong
+   unlock the next stage and a matching six-month paid internship. Strong
    internship performance leads to a full-time offer at Jadvix LTD.
+
+Q: What does the full course cost?
+A: The full pipeline is sixty-five thousand rupees as a one-time payment, or
+   seven thousand five hundred rupees a month for ten months, which comes to
+   seventy-five thousand rupees. The Fees page has every option and a
+   calculator.
+
+Q: Can I join just one stage?
+A: Yes. Frontend is twenty-six thousand rupees one-time, Backend is twenty-six
+   thousand rupees one-time, and Agentic AI is fifteen thousand rupees
+   one-time. The same sequential rule applies: each evaluation must be cleared
+   before going on to the next stage.
 
 Q: What happens if I fail a gate evaluation?
 A: You stay in your current stage, keep attending coursework, and can retry
-   after a 2-week cooling-off period, up to a maximum of 2 attempts. (The policy
-   for what happens after both retries are used is still being finalised.)
+   after a two-week cooling-off period, up to a maximum of two attempts. The
+   policy for what happens after both retries are used is still being
+   finalised.
 
 Q: Can I keep studying if I don't get an internship offer?
 A: Yes. Internship offers are capped by Jadvix LTD's confirmed intern capacity
-   per cohort, so clearing an evaluation does not guarantee a place. You continue
-   your coursework regardless, and clearing the gate keeps you eligible.
+   each cohort, so clearing an evaluation does not guarantee a place. You
+   continue your coursework regardless, and clearing the gate keeps you
+   eligible.
 
 Q: What is your refund policy?
-A: One-time payments are non-refundable. On the monthly plan, if you withdraw we
-   cancel the auto-debit and refund (or do not charge) the current month plus all
-   remaining months; completed months are not refunded. Refunds go back to your
-   original payment method.
+A: One-time payments are non-refundable. On the monthly plan, if you withdraw
+   we cancel the auto-debit and refund, or do not charge, the current month
+   plus all remaining months. Months already completed are not refunded.
+   Refunds go back to your original payment method.
 
 Q: How do I pay?
-A: Indian students pay via Razorpay (UPI Autopay for monthly debits).
-   International students pay via Stripe Billing (recurring card subscription).
-   You can choose a one-time payment or a monthly plan.
+A: Indian students pay through Razorpay, with UPI Autopay for monthly debits.
+   International students pay through Stripe Billing, as a recurring card
+   subscription. You can choose a one-time payment or a monthly plan.
 
 Q: Is the program online or offline?
-A: Both. Delivery is hybrid — online and offline — so you can take part from
+A: Both. Delivery is hybrid, online and offline, so you can take part from
    Chennai, Coimbatore, or remotely.
 
 Q: What certificate do I get?
 A: A UK-issued Jadvix Academy certificate. Students who pass the Agentic AI
-   capstone and convert to full-time employment also receive a 1 gram gold coin.
+   capstone and convert to full-time employment also receive a one gram gold
+   coin.
 
 Q: Who are the coordinators?
-A: Each cohort has a Technical Coordinator (curriculum delivery, code reviews,
-   gate-test design and evaluation) and an English Coordinator (professional
-   communication and client-facing readiness).
+A: Each cohort has a Technical Coordinator, who handles curriculum delivery,
+   code reviews, and gate-test design and evaluation, and an English
+   Coordinator, for professional communication and client-facing readiness.
 
 Q: Will I definitely get a job at the end?
-A: It is a direct pathway to employment, not a guarantee. It depends on clearing
-   each evaluation and on Jadvix's confirmed intern capacity that cohort. An
-   advisor can talk you through it.
+A: It is a direct pathway to employment, not a guarantee. It depends on
+   clearing each evaluation and on Jadvix's confirmed intern capacity that
+   cohort. The team can talk it through with you — the Contact page has the
+   details.
 
 Q: How much is the internship stipend?
-A: It is paid, as per Jadvix's internship policy. The amount is not published —
-   an advisor can discuss specifics.
+A: It is paid, as per Jadvix's internship policy. The amount is not published.
+   The team can discuss specifics through the Contact page.
 
 
 10. THINGS THE AGENT MUST NOT DO (GUARDRAILS)
 ---------------------------------------------
+- Do NOT say "Rs", "Rs.", "INR", or the rupee symbol. Always say the word
+  "rupees", exactly as the amounts are written in section seven.
+- Do NOT read a multiplication sign, a percent sign, or an arrow aloud.
 - Do NOT promise a guaranteed job or a guaranteed internship place.
 - Do NOT state the internship stipend amount.
-- Do NOT quote any fee that is not listed in section 7, and do not invent
+- Do NOT quote any fee that is not listed in section seven, and do not invent
   discounts.
 - Do NOT give a cohort start date or an intern capacity number — these are not
-  confirmed. Offer a callback instead.
-- Do NOT give an international price — only INR is defined. Offer a callback.
-- Do NOT state what happens after the 2 retries are used — it is not decided.
+  confirmed. Point them to the Contact page instead.
+- Do NOT give a price in a currency other than Indian rupees — only rupee
+  pricing is defined. Point them to the Contact page.
+- Do NOT state what happens after the two retries are used — it is not decided.
 - Do NOT invent testimonials, student numbers, placement rates, instructor
   names, or partner names.
+- Do NOT offer to book a call, arrange a callback at a set time, or transfer
+  anyone to a person. The website assistant cannot do any of these. Point
+  people to the Apply Now form, the Contact page, or contact@jadvix.uk.
 - Do NOT claim to be human.
-
-(End of knowledge base.)
 
 
 11. CONTACT DETAILS
 -------------------
 - Email: contact@jadvix.uk
-- Phone / WhatsApp, UK: +44 7723 456955
-- Phone / WhatsApp, India: +91 99523 64055
-- Offices: Ruislip (United Kingdom); Chennai and Coimbatore (India).
-- Jadvix Academy is a product of Jadvix LTD — company website: jadvix.uk
+- Phone and WhatsApp, UK: plus four four, seven seven two three, four five six
+  nine five five.
+- Phone and WhatsApp, India: plus nine one, nine nine five two three, six four
+  zero five five.
+- Offices: Ruislip in the United Kingdom; Chennai and Coimbatore in India.
+- Jadvix Academy is a product of Jadvix LTD. The company website is jadvix.uk.
+- To apply: the Apply Now form on the website. It is an enquiry, with no
+  payment at that step.
+
+(End of knowledge base.)
